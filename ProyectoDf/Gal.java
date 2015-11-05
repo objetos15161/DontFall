@@ -21,7 +21,7 @@ public class Gal extends Actor
         //checkHit();
         checaFin();
     }    
-
+//objetos2223.github.io
     public void checkKey()
     {
         x=getX();
