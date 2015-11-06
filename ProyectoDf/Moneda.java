@@ -17,6 +17,7 @@ public class Moneda extends Bonificacion
     {
         // Add your action code here.
         genera();
+       
    }   
     
     public void Moneda()
@@ -25,21 +26,27 @@ public class Moneda extends Bonificacion
     }
     public void genera()//genera monedas y las pone en el mundo depe
     {
-   
-    int x=Greenfoot.getRandomNumber(600);
     int y=getY();
    move(-1);
+   
    if(getX()==0)
    {
-      Manzana man1= new Manzana();
-       getWorld().addObject(man1, 650, 250);
-       getWorld().removeObject(this);
+     DontWorld mundo=(DontWorld)getWorld();
+     mundo.generaMoneda();
+     
+     
        
      //aqui pongo otra boificacion diferete o un enemigo  
-  //  setLocation(x, y);
-    
-    }
-    
+  //  se le da un mensaje al mundo para que cree un nuevo tipo de bonificacion 
+   
     }
     
 }
+   
+    
+    
+    }
+    
+    
+    
+

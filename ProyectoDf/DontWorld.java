@@ -38,4 +38,13 @@ public class DontWorld extends World
         
         
     }
+    public void generaMoneda()
+    {
+        int y=Greenfoot.getRandomNumber(250);
+        Moneda mon1=new Moneda();
+    
+      this.addObject(mon1,600,y);
+    
+    
+    }
 }

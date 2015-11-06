@@ -10,18 +10,27 @@ public class Gal extends Actor
 {
     private int x;
     private int y;
+    private Counter contPuntos;
     /*
      * Act - do whatever the Gal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public Gal()//Constructor de la clase Gal
+    {
+        contPuntos= new Counter("Puntos ");
+        contPuntos.setValue(0); 
+    }
+
     public void act() 
     {
         // Add your action code here.
+      
         checkKey();
-        //checkHit();
-        checaFin();
+        checkHit();
+         checaFin();
+        
     }    
-//objetos2223.github.io
+    //objetos2223.github.io
     public void checkKey()
     {
         x=getX();
@@ -38,11 +47,22 @@ public class Gal extends Actor
     {
         boolean hitByTrunk= isTouching(Tronco.class);
         boolean hitByBestia= isTouching(Bestia.class);
+        boolean hitByCoin= isTouching(Moneda.class);
+        boolean hitByApple= isTouching(Manzana.class);
+        x=getX();
+        y=getY();   
         if(hitByTrunk||hitByBestia)
         {
 
-            Greenfoot.stop();
+            //   Greenfoot.stop();
 
+        }
+        if(hitByCoin)
+        {
+            contPuntos.setValue(contPuntos.getValue()+1);
+            DontWorld mundo=(DontWorld)getWorld();
+            mundo.generaMoneda();
+            removeTouching(Moneda.class);
         }
 
     }
@@ -57,5 +77,11 @@ public class Gal extends Actor
             getWorld().removeObject(this);
 
         }
+    }
+
+    protected void addedToWorld(World mundo)
+    {
+        mundo.addObject(contPuntos,50,20);
+
     }
 }
