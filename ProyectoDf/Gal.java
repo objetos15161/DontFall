@@ -10,6 +10,8 @@ public class Gal extends Actor
 {
     private int x;
     private int y;
+    
+    
     private Counter contPuntos;
     /*
      * Act - do whatever the Gal wants to do. This method is called whenever
@@ -42,10 +44,11 @@ public class Gal extends Actor
             setLocation(x,y-2);
         }
     }
+    
 
     public void checkHit()
     {
-        boolean hitByTrunk= isTouching(Tronco.class);
+        boolean hitByTrunk= isTouching(Troncos.class);
         boolean hitByBestia= isTouching(Bestia.class);
         boolean hitByCoin= isTouching(Moneda.class);
         boolean hitByApple= isTouching(Manzana.class);
@@ -64,12 +67,19 @@ public class Gal extends Actor
             mundo.generaMoneda();
             removeTouching(Moneda.class);
         }
+        if(hitByApple)
+        {
+            contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
+            DontWorld mundo=(DontWorld)getWorld();
+            mundo.generaManzana();
+            removeTouching(Manzana.class);
+        }
 
     }
 
     public void checaFin()
     {
-        if(getY()==500)//getWorld().getHeight()
+        if(getY()==600)//getWorld().getHeight()
         {
 
             Gal jugador2=new Gal();// si se cae agrega un nuevo Gal en una posicion

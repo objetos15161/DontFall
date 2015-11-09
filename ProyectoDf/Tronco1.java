@@ -1,15 +1,16 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Tronco5 here.
+ * Write a description of class Tronco here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Tronco5 extends Troncos
+public class Tronco1 extends Troncos
 {
+    private int WtamX=650,WtamY=600;//TAMAÑO DEL MUNDO EN X y Y
     /**
-     * Act - do whatever the Tronco5 wants to do. This method is called whenever
+     * Act - do whatever the Tronco wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
@@ -18,4 +19,6 @@ public class Tronco5 extends Troncos
         muevete();
        checaLimite();
     }    
+
+   
 }

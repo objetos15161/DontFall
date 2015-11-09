@@ -18,16 +18,5 @@ public class Manzana extends Bonificacion
         genera();
     }    
     
-    public void genera()
-    {
-    move(-2);
-    if(getX()==0)
-    {
-    Moneda mon1= new Moneda();
-    getWorld().addObject(mon1,650,250);
-    getWorld().removeObject(this);
-    }
-    
-    
-    }
+   
 }

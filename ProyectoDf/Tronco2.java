@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Tronco2 extends Tronco
+public class Tronco2 extends Troncos
 {
     private int WtamX=650,WtamY=600;//TAMAÑO DEL MUNDO EN X y Y
     /**
@@ -17,23 +17,10 @@ public class Tronco2 extends Tronco
     {
         // Add your action code here.
         muevete();
-        checaLimite();
+       checaLimite();
     }    
 
-    public void muevete()
-    {
-        move(-2);
-    }
+    
 
-    public void checaLimite()
-    {
-        if(getX()==0)
-        {
-            Tronco2 unTronco= new Tronco2();
-            Tronco2 unTronco2= new Tronco2();
-            getWorld().addObject(unTronco,WtamX,(WtamY-85));//agregar el nuevo tronco en el filo del mundo (derecha)
-            getWorld().addObject(unTronco2,WtamX,85);
-            getWorld().removeObject(this);
-        }                                                       
-    }
+    
 }

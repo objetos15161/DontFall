@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Tronco3 extends Tronco
+public class Tronco3 extends Troncos
 {
     /**
      * Act - do whatever the Tronco3 wants to do. This method is called whenever
@@ -15,5 +15,7 @@ public class Tronco3 extends Tronco
     public void act() 
     {
         // Add your action code here.
+        muevete();
+       checaLimite();
     }    
 }
