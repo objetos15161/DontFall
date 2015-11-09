@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Greenfoot properties
 #Mon Nov 09 11:14:37 CST 2015
 target2.name=Tronco4
@@ -5,6 +6,53 @@ target9.name=GifImage
 dependency11.type=UsesDependency
 dependency18.type=UsesDependency
 dependency15.from=Moneda
+=======
+#Greenfoot project file
+class.Bestia.image=Blanka-backward-roll-alp.gif
+class.Bestia.superclass=greenfoot.Actor
+class.Bonificacion.superclass=greenfoot.Actor
+class.DontWorld.image=bge01.jpg
+class.DontWorld.superclass=greenfoot.World
+class.Gal.image=Pou\ (1).png
+class.Gal.superclass=greenfoot.Actor
+class.GifImage.superclass=
+class.Manzana.image=Manzana1.png
+class.Manzana.superclass=Bonificacion
+class.Moneda.image=bitcoin.png
+class.Moneda.superclass=Bonificacion
+class.Tronco.image=Tronco1.png
+class.Tronco.superclass=greenfoot.Actor
+class.Tronco2.image=Tronco2.png
+class.Tronco2.superclass=Tronco
+dependency1.from=DontWorld
+dependency1.to=Tronco
+dependency1.type=UsesDependency
+dependency10.from=Manzana
+dependency10.to=Moneda
+dependency10.type=UsesDependency
+dependency11.from=DontWorld
+dependency11.to=Moneda
+dependency11.type=UsesDependency
+dependency2.from=DontWorld
+dependency2.to=Gal
+dependency2.type=UsesDependency
+dependency3.from=Bestia
+dependency3.to=GifImage
+dependency3.type=UsesDependency
+dependency4.from=Gal
+dependency4.to=Tronco
+dependency4.type=UsesDependency
+dependency5.from=Gal
+dependency5.to=Bestia
+dependency5.type=UsesDependency
+dependency6.from=Tronco2
+dependency6.to=Tronco2
+dependency6.type=UsesDependency
+dependency7.from=Tronco2
+dependency7.to=Tronco
+dependency7.type=UsesDependency
+dependency8.from=DontWorld
+>>>>>>> origin/master
 dependency8.to=Tronco2
 target5.naviview.expanded=true
 target14.type=ClassTarget
@@ -63,11 +111,28 @@ target7.typeParameters=
 target8.height=50
 class.Tronco2.image=Tronco2.png
 mainWindow.y=0
+<<<<<<< HEAD
 mainWindow.x=-7
 target12.showInterface=false
 target3.showInterface=false
 dependency3.to=GifImage
 class.Manzana.superclass=Bonificacion
+=======
+package.numDependencies=11
+package.numTargets=9
+project.charset=UTF-8
+simulation.speed=89
+target1.editor.height=700
+target1.editor.width=900
+target1.editor.x=40
+target1.editor.y=20
+target1.height=50
+target1.name=GifImage
+target1.naviview.expanded=true
+target1.showInterface=false
+target1.type=ClassTarget
+target1.typeParameters=
+>>>>>>> origin/master
 target1.width=80
 dependency7.type=UsesDependency
 dependency4.from=Gal
