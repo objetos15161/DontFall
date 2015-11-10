@@ -20,7 +20,7 @@ public class Troncos extends Actor
     }    
     public void aumentaVel()
     {
-    vel=vel+1;
+    vel-=1;
     }
 
     public void muevete()
