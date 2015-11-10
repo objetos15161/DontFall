@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bestia extends Actor
+public class Bestia extends Enemigos
 {
     private GifImage bestia= new GifImage("Bestia1.gif");
     private int WtamX=650,WtamY=600;//TAMAÑO DEL MUNDO EN X y Y

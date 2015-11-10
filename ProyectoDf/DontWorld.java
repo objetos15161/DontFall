@@ -8,8 +8,8 @@ import greenfoot.*;
  */
 public class DontWorld extends World
 {
- public static final int xTam=650;
- public static final int yTam=600;   
+ public static final int XTAM=650;
+ public static final int YTAM=600;   
     
  private  int y;//variable para determinar de manera aleatoria la y de los objetos   
  private Gal jugador;//Variable para crear al jugador
@@ -26,23 +26,23 @@ public class DontWorld extends World
     public DontWorld()//Constructor del mundo (inicializa los objetos en una posicion)
     {    
         // 
-        super(xTam,yTam,1); 
+        super(XTAM,YTAM,1); 
         jugador= new Gal();//Principal Personaje
         this.addObject(jugador,200,200);//metodo para agregarlo al mundo
         //Troncos//////////// estas variables son para la entrada incial
         tronco1= new Tronco1();//obstaculo
-        this.addObject(tronco1,200,yTam-85);
+        this.addObject(tronco1,200,YTAM-85);
         tronco2= new Tronco1();//obstaculo de diferente tamaño
         this.addObject(tronco2,200,85);
         tronco3= new Tronco2();
-        this.addObject(tronco3,450,yTam-85);
+        this.addObject(tronco3,450,YTAM-85);
         tronco4= new Tronco2();
         this.addObject(tronco4,450,85);
         
         tronco5= new Tronco3();
         this.addObject(tronco4,650,85);
         tronco6= new Tronco3();
-        this.addObject(tronco3,650,yTam-85);
+        this.addObject(tronco3,650,YTAM-85);
         //Bonificaciones////////
        
         Greenfoot.setWorld(new Menu());
@@ -106,23 +106,23 @@ public void generaTroncos()//genera troncos en parejas aleatorias
         
     if(R==0)//agregara a la pareja num 1
     {
-    this.addObject(t1,xTam,yTam-85);
-    this.addObject(t5,xTam,85);
+    this.addObject(t1,XTAM,YTAM-85);
+    this.addObject(t5,XTAM,85);
     }
     if(R==1)
     {
-     this.addObject(t2,xTam,85);
-     this.addObject(t5,xTam,yTam-85);
+     this.addObject(t2,XTAM,85);
+     this.addObject(t5,XTAM,YTAM-85);
     }
     if(R==2)
     {
-    this.addObject(t3,xTam,yTam-85);
-    this.addObject(t1,xTam,85);
+    this.addObject(t3,XTAM,YTAM-85);
+    this.addObject(t1,XTAM,85);
     }
     if(R==3)
     {
-    this.addObject(t6,xTam,yTam-85);
-    this.addObject(t4,xTam,85);
+    this.addObject(t6,XTAM,YTAM-85);
+    this.addObject(t4,XTAM,85);
     }
     if(R==4)
     {
