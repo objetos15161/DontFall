@@ -10,7 +10,7 @@ public class Gal extends Actor
 {
     private int x;
     private int y;
-    
+    private int vel=1;
     
     private Counter contPuntos;
     /*
@@ -70,6 +70,7 @@ public class Gal extends Actor
         if(hitByApple)
         {
             contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
+            Greenfoot.setSpeed(vel+1);
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaManzana();
             removeTouching(Manzana.class);
