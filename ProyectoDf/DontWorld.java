@@ -18,7 +18,7 @@ public class DontWorld extends World
  private Tronco3 tronco5,tronco6;
  private Moneda coin1;//variable para crear una moneda
  private Manzana apple1;//variable para crear una manzana
- 
+ private HealthBar healthbar= new HealthBar();
     /**
      * Constructor for objects of class DontWorld.
      * 
@@ -28,7 +28,7 @@ public class DontWorld extends World
         // 
         super(XTAM,YTAM,1); 
         jugador= new Gal();//Principal Personaje
-        this.addObject(jugador,200,200);//metodo para agregarlo al mundo
+        this.addObject(jugador,200,220);//metodo para agregarlo al mundo
         //Troncos//////////// estas variables son para la entrada incial
         tronco1= new Tronco1();//obstaculo
         this.addObject(tronco1,200,YTAM-85);
@@ -43,12 +43,15 @@ public class DontWorld extends World
         this.addObject(tronco4,650,85);
         tronco6= new Tronco3();
         this.addObject(tronco3,650,YTAM-85);
-        //Bonificaciones////////
-       
+        //Bonificaciones///////
         Greenfoot.setWorld(new Menu());
-       
+        this.addObject(healthbar,300,20);
         
         
+    }
+    public HealthBar getHealthBar()
+    {
+    return healthbar;
     }
     public void act()
     {

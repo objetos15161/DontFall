@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BCreditos extends Botones
+public class BCreditos extends Boton
 {
     /**
      * Act - do whatever the BCreditos wants to do. This method is called whenever

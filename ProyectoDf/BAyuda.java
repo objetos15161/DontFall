@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BAyuda extends Botones
+public class BAyuda extends Boton
 {
     /**
      * Act - do whatever the BAyuda wants to do. This method is called whenever

@@ -8,14 +8,34 @@ import greenfoot.*;
  */
 public class Ayuda extends World
 {
-
+   private BRegresar regresar;
+  public static final int XTAM=650;
+ public static final int YTAM=600;  
+    
     /**
-     * Constructor for objects of class Ayuda.
+     * En esta clase se pone la imagen de ayuda 
+     * y un boton para regresar al menu principal
      * 
      */
     public Ayuda()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(650, 600, 1); 
+        super(XTAM,YTAM, 1); 
+        regresar= new BRegresar();
+        
+        this.addObject(regresar,XTAM-140,YTAM-30);//se adiciona el boton en la parte inferior derecha de la pantalla
+        
     }
+    public void act()
+    {
+    if(Greenfoot.getMouseInfo()!=null)
+    {
+    if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==regresar)
+    {
+    Greenfoot.setWorld(new Menu());
+    }
+    
+    }
+   
+}
 }

@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Tronco3 extends Troncos
+public class Tronco3 extends Tronco
 {
     /**
      * Act - do whatever the Tronco3 wants to do. This method is called whenever

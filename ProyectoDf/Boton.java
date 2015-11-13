@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Botones extends Actor
+public class Boton extends Actor
 {
     /**
      * Act - do whatever the Botones wants to do. This method is called whenever

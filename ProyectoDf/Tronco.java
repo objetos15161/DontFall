@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Troncos extends Actor
+public class Tronco extends Actor
 {
     private int WtamX=650,WtamY=600;//TAMAÑO DEL MUNDO EN X y Y
     private int vel=-2;

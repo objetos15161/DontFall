@@ -1,5 +1,7 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Ayuda()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Ayuda.\r\n\ \r\n
-numComments=1
+comment0.text=\r\n\ En\ esta\ clase\ se\ pone\ la\ imagen\ de\ ayuda\ \r\n\ y\ un\ boton\ para\ regresar\ al\ menu\ principal\r\n\ \r\n
+comment1.params=
+comment1.target=void\ act()
+numComments=2

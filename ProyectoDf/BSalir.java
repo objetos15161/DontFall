@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BSalir extends Botones
+public class BSalir extends Boton
 {
     /**
      * Act - do whatever the BSalir wants to do. This method is called whenever

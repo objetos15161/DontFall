@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BJugar extends Botones
+public class BJugar extends Boton
 {
     /**
      * Act - do whatever the BJugar wants to do. This method is called whenever

@@ -31,11 +31,11 @@ public class Menu extends World
     }
     public void botones()
     {
-      this.addObject(jugar,325,75);
-      this.addObject(ayuda,325,150);
-      this.addObject(cred,325,225);
-      this.addObject(rec,325,300);
-      this.addObject(salir,325,375);
+      this.addObject(jugar,325,100);
+      this.addObject(ayuda,325,200);
+      this.addObject(cred,325,300);
+      this.addObject(rec,325,400);
+      this.addObject(salir,325,500);
      
     }
     public void act()
@@ -54,7 +54,7 @@ public class Menu extends World
     }
     if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==cred)
     {
-    Greenfoot.setWorld(new DontWorld());
+    Greenfoot.setWorld(new Creditos());
     
     }
     if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==rec)

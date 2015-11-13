@@ -1,15 +1,15 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Enemigos here.
+ * Write a description of class BRegresar2 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemigos extends Actor
+public class BRegresar2 extends Boton
 {
     /**
-     * Act - do whatever the Enemigos wants to do. This method is called whenever
+     * Act - do whatever the BRegresar2 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 

@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BRecords extends Botones
+public class BRecords extends Boton
 {
     /**
      * Act - do whatever the Records wants to do. This method is called whenever

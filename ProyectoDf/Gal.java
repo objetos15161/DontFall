@@ -10,27 +10,32 @@ public class Gal extends Actor
 {
     private int x;
     private int y;
-    private int vel=1;
-    
+    private int vel=100;  
+    private int puntos=0;
     private Counter contPuntos;
+    private Counter contVidas;
     /*
      * Act - do whatever the Gal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Gal()//Constructor de la clase Gal
     {
-        contPuntos= new Counter("Puntos ");
-        contPuntos.setValue(0); 
+        contPuntos= new Counter("Puntos ");//contador de puntos
+        contPuntos.setValue(0); //El contador de puntos se inicializa en cero
+
+        contVidas= new Counter("Vidas ");
+        contVidas.setValue(3);
+
     }
 
     public void act() 
     {
         // Add your action code here.
-      
+
         checkKey();
-        checkHit();
-         checaFin();
-        
+        checkHitPunt();
+        checaFin();
+
     }    
     //objetos2223.github.io
     public void checkKey()
@@ -44,48 +49,78 @@ public class Gal extends Actor
             setLocation(x,y-2);
         }
     }
-    
 
-    public void checkHit()
+    public void checkHitPunt()//esta funcion checa si Gal golpea algo y ademas checa el puntaje
     {
-        boolean hitByTrunk= isTouching(Troncos.class);
+        boolean hitByTrunk= isTouching(Tronco.class);
         boolean hitByBestia= isTouching(Bestia.class);
         boolean hitByCoin= isTouching(Moneda.class);
         boolean hitByApple= isTouching(Manzana.class);
+        
         x=getX();
-        y=getY();   
+        y=getY();
+        DontWorld mun= (DontWorld)getWorld();
+        HealthBar healthbar = mun.getHealthBar();
+       
         if(hitByTrunk||hitByBestia)
         {
 
-            //   Greenfoot.stop();
+            healthbar.loseHealth();//le da un mensaje a la barra para que baje un
 
+            if(healthbar.getHealth()<=0)
+            {
+                //aqui se pone el gameover
+                contVidas.setValue(contVidas.getValue()-1);
+                healthbar.reiniciaHealth();
+            }
+
+            //   Greenfoot.stop();
+            hitByTrunk=false;
         }
         if(hitByCoin)
         {
-            contPuntos.setValue(contPuntos.getValue()+1);
+            contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
+            puntos+=100;
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaMoneda();
             removeTouching(Moneda.class);
         }
         if(hitByApple)
         {
-            contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
-            Greenfoot.setSpeed(vel+1);
+            // contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
+            vel=vel+20;
+            //  Greenfoot.setSpeed(vel);
+
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaManzana();
             removeTouching(Manzana.class);
         }
 
+        if(contVidas.getValue()<=0)//esta condicion es para que el contador de vidas no de valores negativos
+        {
+            contVidas.setValue(0);
+            Greenfoot.setWorld(new GameOver());
+            Greenfoot.delay(200);
+            Greenfoot.setWorld(new Menu());
+        }
+        if(puntos%1000==0)
+        {
+            puntos+=1;
+            contVidas.setValue(contVidas.getValue()+1);
+        }
+ 
+        
     }
 
     public void checaFin()
     {
-        if(getY()==600)//getWorld().getHeight()
+        if(getY()>=550)//getWorld().getHeight()
         {
-
-            Gal jugador2=new Gal();// si se cae agrega un nuevo Gal en una posicion
-            getWorld().addObject(jugador2,200,230);
-            getWorld().removeObject(this);
+            contVidas.setValue(contVidas.getValue()-1);
+            //Gal jugador2=new Gal();// si se cae agrega un nuevo Gal en una posicion
+           // getWorld().addObject(jugador2,200,230);
+            this.setLocation(200,220);
+            //getWorld().removeObject(this);
 
         }
     }
@@ -93,6 +128,7 @@ public class Gal extends Actor
     protected void addedToWorld(World mundo)
     {
         mundo.addObject(contPuntos,50,20);
-
+        mundo.addObject(contVidas,150,20);
     }
+
 }
