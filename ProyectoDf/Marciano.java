@@ -1,45 +1,44 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Bestia here.
+ * Write a description of class Marcianos here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bestia extends Enemigo
+public class Marciano extends Enemigo
 {
-    private GifImage bestia= new GifImage("Blanka 7.gif");
-    private int WtamX=650,WtamY=600;//TAMAÑO DEL MUNDO EN X y Y
+    private GifImage marciano = new GifImage("Takuma.gif");
+    
+    
     /**
-     * Act - do whatever the Bestia wants to do. This method is called whenever
+     * Act - do whatever the Marcianos wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
+        setImage(marciano.getCurrentImage());  
         checaLimite();
-        setImage(bestia.getCurrentImage());
-       move(2);
-            }    
-      public void checaLimite()
+      move(-2);
+    } 
+     public void checaLimite()
     {
-        if(getX()==getWorld().getWidth()-30)
+        if(getX()==0)
         {
          DontWorld mundo= (DontWorld)getWorld();
-         mundo.generaBestia();
+         mundo.generaMarciano();
          getWorld().removeObject(this);
         }                                                       
     }
-    public void checkHit()
+      public void checkHit()
     {
      boolean hitByGal=isTouching(Gal.class);
      if(hitByGal)
      {
        DontWorld mundo = (DontWorld)getWorld();
-       mundo.generaBestia();
+       mundo.generaMarciano();
        getWorld().removeObject(this);
         }
      
     }
-                                        
-    
 }

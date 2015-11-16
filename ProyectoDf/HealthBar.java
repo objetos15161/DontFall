@@ -8,7 +8,7 @@ import java.awt.Color;
  */
 public class HealthBar extends Actor
 {
-    private int health = 20;
+    private int health = 50;
     private int healthBarWidth = 100;
     private int healthBarHeight = 15;
     private int pixelsPerHealthPoint = (int)healthBarWidth/health;

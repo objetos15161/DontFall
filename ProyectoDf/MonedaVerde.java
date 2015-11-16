@@ -1,20 +1,19 @@
 import greenfoot.*;
 
 /**
- * Esta es una subClase de actor que maneja los tipos de enemigos del juego 
+ * Write a description of class MonedaVerde here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemigo extends Actor
+public class MonedaVerde extends Bonificacion
 {
     /**
-     * Act - do whatever the Enemigos wants to do. This method is called whenever
+     * Act - do whatever the MonedaVerde wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-         
+        // Add your action code here.
     }    
-    
 }

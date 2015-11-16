@@ -52,11 +52,11 @@ public class Gal extends Actor
 
     public void checkHitPunt()//esta funcion checa si Gal golpea algo y ademas checa el puntaje
     {
-        boolean hitByTrunk= isTouching(Tronco.class);
-        boolean hitByBestia= isTouching(Bestia.class);
-        boolean hitByCoin= isTouching(Moneda.class);
-        boolean hitByApple= isTouching(Manzana.class);
-        
+        boolean hitByTrunk    = isTouching(Tronco.class);
+        boolean hitByBestia   = isTouching(Bestia.class);
+        boolean hitByCoin     = isTouching(Moneda.class);
+        boolean hitByApple    = isTouching(Manzana.class);
+        boolean hitByAppleGus = isTouching(ManzanaGus.class);
         x=getX();
         y=getY();
         DontWorld mun= (DontWorld)getWorld();
@@ -71,6 +71,7 @@ public class Gal extends Actor
             {
                 //aqui se pone el gameover
                 contVidas.setValue(contVidas.getValue()-1);
+                Greenfoot.delay(20);
                 healthbar.reiniciaHealth();
             }
 
@@ -80,10 +81,17 @@ public class Gal extends Actor
         if(hitByCoin)
         {
             contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
-            puntos+=100;
+            puntos+=1000;
+            if(puntos%1000==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
+        {
+            //puntos+=1;
+            contVidas.setValue(contVidas.getValue()+1);
+        }
+ 
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaMoneda();
             removeTouching(Moneda.class);
+            
         }
         if(hitByApple)
         {
@@ -103,15 +111,18 @@ public class Gal extends Actor
             Greenfoot.delay(200);
             Greenfoot.setWorld(new Menu());
         }
-        if(puntos%1000==0)
+        if(hitByAppleGus)
         {
-            puntos+=1;
-            contVidas.setValue(contVidas.getValue()+1);
+        
+        
         }
- 
+        
         
     }
-
+    public int getPuntos()
+    {
+        return puntos;
+    }
     public void checaFin()
     {
         if(getY()>=550)//getWorld().getHeight()
