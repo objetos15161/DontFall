@@ -118,8 +118,11 @@ public class Gal extends Actor
         contPuntos.setValue(0);
         }
         if(hitByAppleGus)
-        {
-
+{
+    
+            DontWorld mundo=(DontWorld)getWorld();
+            mundo.generaManzanaGus();
+            removeTouching(ManzanaGus.class);
         }
         if(hitByGreenCoin)
         {
