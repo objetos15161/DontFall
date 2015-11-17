@@ -14,6 +14,6 @@ public class MonedaVerde extends Bonificacion
      */
     public void act() 
     {
-        // Add your action code here.
+       genera();
     }    
 }

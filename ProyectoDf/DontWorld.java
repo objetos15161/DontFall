@@ -170,11 +170,12 @@ public class DontWorld extends World
         {
             nivel1();
         }
-        if( jugador.getPuntos()==2000)
+        if( jugador.getPuntos()>=2000&jugador.getPuntos()<=3500)
         {
+             this.removeObjects(this.getObjects(Marciano.class));
             nivel2();
         }
-        if( jugador.getPuntos()==3000)
+        if( jugador.getPuntos()>=3500)
         {
             nivel3();
         }
@@ -183,7 +184,7 @@ public class DontWorld extends World
     public void nivel1()
     {
         int z=Greenfoot.getRandomNumber(400);
-        if(z==1)
+        if(z==100)
         {
             generaMarciano();
         }
@@ -194,6 +195,7 @@ public class DontWorld extends World
         int z=Greenfoot.getRandomNumber(400);
         if(z==1)
         {
+          
             generaBestia();
         }
 

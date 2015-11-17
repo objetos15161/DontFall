@@ -57,11 +57,12 @@ public class Gal extends Actor
         boolean hitByCoin     = isTouching(Moneda.class);
         boolean hitByApple    = isTouching(Manzana.class);
         boolean hitByAppleGus = isTouching(ManzanaGus.class);
+        boolean hitByGreenCoin= isTouching(MonedaVerde.class);
         x=getX();
         y=getY();
         DontWorld mun= (DontWorld)getWorld();
         HealthBar healthbar = mun.getHealthBar();
-       
+
         if(hitByTrunk||hitByBestia)
         {
 
@@ -81,17 +82,17 @@ public class Gal extends Actor
         if(hitByCoin)
         {
             contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
-            puntos+=1000;
+            puntos+=100;
             if(puntos%1000==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
-        {
-            //puntos+=1;
-            contVidas.setValue(contVidas.getValue()+1);
-        }
- 
+            {
+                //puntos+=1;
+                contVidas.setValue(contVidas.getValue()+1);
+            }
+
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaMoneda();
             removeTouching(Moneda.class);
-            
+
         }
         if(hitByApple)
         {
@@ -111,25 +112,42 @@ public class Gal extends Actor
             Greenfoot.delay(200);
             Greenfoot.setWorld(new Menu());
         }
+        if(puntos<=0)
+        {
+           puntos=0;
+        contPuntos.setValue(0);
+        }
         if(hitByAppleGus)
         {
-        
-        
+
         }
-        
-        
+        if(hitByGreenCoin)
+        {
+           
+            contPuntos.setValue(contPuntos.getValue()-100);//suma 100 al contador de puntos
+            puntos-=100;
+            
+
+            DontWorld mundo=(DontWorld)getWorld();
+            mundo.generaMoneda();
+            removeTouching(MonedaVerde.class);
+
+        }
+
     }
+
     public int getPuntos()
     {
         return puntos;
     }
+
     public void checaFin()
     {
         if(getY()>=550)//getWorld().getHeight()
         {
             contVidas.setValue(contVidas.getValue()-1);
             //Gal jugador2=new Gal();// si se cae agrega un nuevo Gal en una posicion
-           // getWorld().addObject(jugador2,200,230);
+            // getWorld().addObject(jugador2,200,230);
             this.setLocation(200,220);
             //getWorld().removeObject(this);
 
