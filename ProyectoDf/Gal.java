@@ -14,6 +14,8 @@ public class Gal extends Actor
     private int puntos=0;
     private Counter contPuntos;
     private Counter contVidas;
+    private Counter contMonedas;
+    
     /*
      * Act - do whatever the Gal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -22,9 +24,14 @@ public class Gal extends Actor
     {
         contPuntos= new Counter("Puntos ");//contador de puntos
         contPuntos.setValue(0); //El contador de puntos se inicializa en cero
-
-        contVidas= new Counter("Vidas ");
+        
+        contMonedas= new Counter("Monedas ");//Contador de monedas 
+        contMonedas.setValue(0);
+        
+        contVidas= new Counter("Vidas ");//Contador de vidas
         contVidas.setValue(3);
+        
+        
 
     }
 
@@ -81,9 +88,10 @@ public class Gal extends Actor
         }
         if(hitByCoin)
         {
+            
             contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
             puntos+=100;
-            if(puntos%1000==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
+            if(contMonedas.getValue()%10==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
             {
                 //puntos+=1;
                 contVidas.setValue(contVidas.getValue()+1);
@@ -92,6 +100,8 @@ public class Gal extends Actor
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaMoneda();
             removeTouching(Moneda.class);
+            
+            contMonedas.setValue(contMonedas.getValue()+1);
 
         }
         if(hitByApple)
@@ -161,6 +171,8 @@ public class Gal extends Actor
     {
         mundo.addObject(contPuntos,50,20);
         mundo.addObject(contVidas,150,20);
+        mundo.addObject(contMonedas,250,20);
+      
     }
 
 }

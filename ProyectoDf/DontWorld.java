@@ -1,4 +1,4 @@
-import greenfoot.*;
+ import greenfoot.*;
 
 /**
  * Write a description of class DontWorld here.
@@ -10,11 +10,11 @@ public class DontWorld extends World
 {
     public static final int XTAM=650;
     public static final int YTAM=600;   
-    private int z;   
-    private  int y;//variable para determinar de manera aleatoria la y de los objetos   
+    private int z,R,arriba=0;//r y z son para generar numeros aleatorios, arriba es es bandera para verificar  que tronco sigue por pintarse   
+    private int y;//variable para determinar de manera aleatoria la y de los objetos   
     private Gal jugador;//Variable para crear al jugador
-    private Tronco1 tronco1, tronco2;//variable para los troncos de tamaño 1
-    private Tronco2 tronco3, tronco4;//variable para los troncos de tamaño 2
+    private Tronco1 tronco1;//variable para los troncos de tamaño 1
+    private Tronco2 tronco2, tronco4;//variable para los troncos de tamaño 2
     private Tronco3 tronco5,tronco6;
     private Moneda coin1;//variable para crear una moneda AMARILLA
     private MonedaVerde coin2;//variable para crear una moneda VERDE
@@ -23,6 +23,7 @@ public class DontWorld extends World
     private Marciano mar1;
     private Bestia best1;
     private ManzanaGus manG;
+    private Counter contNivel;
     /**
      * Constructor for objects of class DontWorld.
      * 
@@ -32,24 +33,32 @@ public class DontWorld extends World
         // 
         super(XTAM,YTAM,1); 
         jugador= new Gal();//Principal Personaje
-        this.addObject(jugador,200,220);//metodo para agregarlo al mundo
+        this.addObject(jugador,150,220);//metodo para agregarlo al mundo
         //Troncos//////////// estas variables son para la entrada incial
         tronco1= new Tronco1();//obstaculo
-        this.addObject(tronco1,200,YTAM-85);
-        tronco2= new Tronco1();//obstaculo de diferente tamaño
-        this.addObject(tronco2,200,85);
+        this.addObject(tronco1,250,YTAM-80);
+        tronco2= new Tronco2();//obstaculo de diferente tamaño
+        this.addObject(tronco2,450,80);
+        
+        /**
         tronco3= new Tronco2();
-        this.addObject(tronco3,450,YTAM-85);
+        this.addObject(tronco3,600,YTAM-80);
         tronco4= new Tronco2();
-        this.addObject(tronco4,450,85);
+        this.addObject(tronco4,600,80);
 
         tronco5= new Tronco3();
-        this.addObject(tronco4,650,85);
+        this.addObject(tronco4,700,80);
         tronco6= new Tronco3();
-        this.addObject(tronco3,650,YTAM-85);
+        this.addObject(tronco3,700,YTAM-80);
+        */
         //Bonificaciones///////
         Greenfoot.setWorld(new Menu());
-        this.addObject(healthbar,300,20);
+        this.addObject(healthbar,500,20);
+        
+        contNivel= new Counter("Nivel ");//Contador para saber en que nivel esta
+        contNivel.setValue(1);
+        
+        addObject(contNivel,350,20);
 
     }
     public HealthBar getHealthBar()
@@ -98,7 +107,7 @@ public class DontWorld extends World
 
     public void generaBonif()
     {
-        int z=Greenfoot.getRandomNumber(900);       
+         z=Greenfoot.getRandomNumber(900);       
         if(z==0)
         {
             generaMoneda(); 
@@ -117,8 +126,8 @@ public class DontWorld extends World
 
     public void generaTroncos()//genera troncos en parejas aleatorias
     {
-        int R=Greenfoot.getRandomNumber(6);
-
+        R=Greenfoot.getRandomNumber(6);
+        
         Tronco1  t1; 
         Tronco1  t2;   
         Tronco2  t3;  
@@ -133,34 +142,18 @@ public class DontWorld extends World
         t5= new Tronco3(); 
         t6= new Tronco3();
 
-        if(R==0)//agregara a la pareja num 1
+        if(arriba==0)//agregara a la pareja num 1
         {
-            this.addObject(t1,XTAM,YTAM-85);
-            this.addObject(t5,XTAM,85);
-        }
-        if(R==1)
+            
+            this.addObject(t5,XTAM,80);
+            arriba=1;
+        }else if(arriba==1)
         {
-            this.addObject(t2,XTAM,85);
-            this.addObject(t5,XTAM,YTAM-85);
+            
+            this.addObject(t1,XTAM,YTAM-80);
+            arriba=0;
         }
-        if(R==2)
-        {
-            this.addObject(t3,XTAM,YTAM-85);
-            this.addObject(t1,XTAM,85);
-        }
-        if(R==3)
-        {
-            this.addObject(t6,XTAM,YTAM-85);
-            this.addObject(t4,XTAM,85);
-        }
-        if(R==4)
-        {
-
-        }
-        if(R==5)
-        {
-
-        }
+        
 
     }
 
@@ -183,8 +176,9 @@ public class DontWorld extends World
 
     public void nivel1()
     {
-        int z=Greenfoot.getRandomNumber(400);
-        if(z==100)
+         z=Greenfoot.getRandomNumber(100);
+         contNivel.setValue(2);
+        if(z==3)
         {
             generaMarciano();
         }
@@ -192,8 +186,9 @@ public class DontWorld extends World
 
     public void nivel2()
     {
-        int z=Greenfoot.getRandomNumber(400);
-        if(z==1)
+        z=Greenfoot.getRandomNumber(100);
+         contNivel.setValue(3);
+        if(z==3)
         {
           
             generaBestia();
@@ -204,6 +199,7 @@ public class DontWorld extends World
     public void nivel3()
     {
         z=Greenfoot.getRandomNumber(900);
+         contNivel.setValue(4);
         if(z==1)
         {
             generaBestia();
@@ -230,5 +226,6 @@ public class DontWorld extends World
         this.addObject(best1,0,r);
 
     }
+     
 
 }
