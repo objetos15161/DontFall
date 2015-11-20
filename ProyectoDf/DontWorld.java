@@ -62,6 +62,7 @@ public class DontWorld extends World
         addObject(contNivel,350,20);
 
     }
+  
     public HealthBar getHealthBar()
     {
         return healthbar;
@@ -256,6 +257,11 @@ public class DontWorld extends World
         best1= new Bestia();
         this.addObject(best1,0,r);
 
+    }
+    
+    public Gal getGal()
+    {
+    return jugador;
     }
      
 

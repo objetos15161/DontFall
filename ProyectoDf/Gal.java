@@ -15,7 +15,14 @@ public class Gal extends Actor
     private Counter contPuntos;
     private Counter contVidas;
     private Counter contMonedas;
- 
+    private boolean hitByTrunk;
+    private boolean hitByEnemigo; 
+    private boolean hitByCoin ;    
+    private boolean hitByApple ; 
+    private boolean hitByAppleGus;
+    private boolean hitByGreenCoin; 
+    
+
     /*
      * Act - do whatever the Gal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,17 +31,15 @@ public class Gal extends Actor
     {
         contPuntos= new Counter("Puntos ");//contador de puntos
         contPuntos.setValue(0); //El contador de puntos se inicializa en cero
-        
+
         contMonedas= new Counter("Monedas ");//Contador de monedas 
         contMonedas.setValue(0);
-        
+
         contVidas= new Counter("Vidas ");//Contador de vidas
         contVidas.setValue(3);
-        
-        
 
+       
     }
-
     public void act() 
     {
         // Add your action code here.
@@ -59,12 +64,14 @@ public class Gal extends Actor
 
     public void checkHitPunt()//esta funcion checa si Gal golpea algo y ademas checa el puntaje
     {
-        boolean hitByTrunk    = isTouching(Tronco.class);
-        boolean hitByEnemigo  = isTouching(Enemigo.class);
-        boolean hitByCoin     = isTouching(Moneda.class);
-        boolean hitByApple    = isTouching(Manzana.class);
-        boolean hitByAppleGus = isTouching(ManzanaGus.class);
-        boolean hitByGreenCoin= isTouching(MonedaVerde.class);
+
+         hitByTrunk    = isTouching(Tronco.class);
+        hitByEnemigo  = isTouching(Enemigo.class);
+        hitByCoin     = isTouching(Moneda.class);
+        hitByApple    = isTouching(Manzana.class);
+        hitByAppleGus = isTouching(ManzanaGus.class);
+        hitByGreenCoin= isTouching(MonedaVerde.class);
+
         x=getX();
         y=getY();
         DontWorld mun= (DontWorld)getWorld();
@@ -100,20 +107,19 @@ public class Gal extends Actor
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaMoneda();
             removeTouching(Moneda.class);
-            
+
             contMonedas.setValue(contMonedas.getValue()+1);
 
         }
         if(hitByApple)
         {
             // contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
-            Tronco t= new Tronco();
-            t.aumentaVel();
-            
+
 
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaManzana();
             removeTouching(Manzana.class);
+            
         }
 
         if(contVidas.getValue()<=0)//esta condicion es para que el contador de vidas no de valores negativos
@@ -126,22 +132,21 @@ public class Gal extends Actor
         }
         if(puntos<=0)
         {
-           puntos=0;
-        contPuntos.setValue(0);
+            puntos=0;
+            contPuntos.setValue(0);
         }
         if(hitByAppleGus)
-{
-    
+        {
+
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaManzanaGus();
             removeTouching(ManzanaGus.class);
         }
         if(hitByGreenCoin)
         {
-           Greenfoot.playSound("click2.wav");
+            Greenfoot.playSound("click2.wav");
             contPuntos.setValue(contPuntos.getValue()-100);//suma 100 al contador de puntos
             puntos-=100;
-            
 
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaMoneda();
@@ -151,6 +156,11 @@ public class Gal extends Actor
 
     }
 
+    public boolean getHitByApple()
+    {
+    
+    return hitByApple;
+    }
     public int getPuntos()
     {
         return puntos;
@@ -174,7 +184,7 @@ public class Gal extends Actor
         mundo.addObject(contPuntos,50,20);
         mundo.addObject(contVidas,150,20);
         mundo.addObject(contMonedas,250,20);
-      
+
     }
 
 }
