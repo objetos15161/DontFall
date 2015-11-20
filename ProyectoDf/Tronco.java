@@ -9,7 +9,8 @@ import greenfoot.*;
 public class Tronco extends Actor
 {
     private int WtamX=650,WtamY=600;//TAMAÑO DEL MUNDO EN X y Y
-    private int vel=-2;
+    private int vel=-2,x,y;
+ 
     /**
      * Act - do whatever the Troncos wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,14 +19,20 @@ public class Tronco extends Actor
     {
        
     }    
+  
     public void aumentaVel()
     {
-    vel-=1;
-    }
 
+    vel=vel-1;
+         
+    }
+    
     public void muevete()
-    {
-        move(vel);
+    { 
+        x=getX();
+        y=getY();
+       setLocation(x+vel,y);
+      
     }
     
     public void checaLimite()

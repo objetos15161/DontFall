@@ -15,7 +15,7 @@ public class Gal extends Actor
     private Counter contPuntos;
     private Counter contVidas;
     private Counter contMonedas;
-    
+ 
     /*
      * Act - do whatever the Gal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -60,7 +60,7 @@ public class Gal extends Actor
     public void checkHitPunt()//esta funcion checa si Gal golpea algo y ademas checa el puntaje
     {
         boolean hitByTrunk    = isTouching(Tronco.class);
-        boolean hitByBestia   = isTouching(Bestia.class);
+        boolean hitByEnemigo  = isTouching(Enemigo.class);
         boolean hitByCoin     = isTouching(Moneda.class);
         boolean hitByApple    = isTouching(Manzana.class);
         boolean hitByAppleGus = isTouching(ManzanaGus.class);
@@ -70,7 +70,7 @@ public class Gal extends Actor
         DontWorld mun= (DontWorld)getWorld();
         HealthBar healthbar = mun.getHealthBar();
 
-        if(hitByTrunk||hitByBestia)
+        if(hitByTrunk||hitByEnemigo)
         {
 
             healthbar.loseHealth();//le da un mensaje a la barra para que baje un
@@ -88,7 +88,7 @@ public class Gal extends Actor
         }
         if(hitByCoin)
         {
-            
+            Greenfoot.playSound("getcoin.wav");
             contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
             puntos+=100;
             if(contMonedas.getValue()%10==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
@@ -107,8 +107,9 @@ public class Gal extends Actor
         if(hitByApple)
         {
             // contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
-            vel=vel+20;
-            //  Greenfoot.setSpeed(vel);
+            Tronco t= new Tronco();
+            t.aumentaVel();
+            
 
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaManzana();
@@ -117,6 +118,7 @@ public class Gal extends Actor
 
         if(contVidas.getValue()<=0)//esta condicion es para que el contador de vidas no de valores negativos
         {
+            Greenfoot.playSound("GameOver.wav");
             contVidas.setValue(0);
             Greenfoot.setWorld(new GameOver());
             Greenfoot.delay(200);
@@ -136,7 +138,7 @@ public class Gal extends Actor
         }
         if(hitByGreenCoin)
         {
-           
+           Greenfoot.playSound("click2.wav");
             contPuntos.setValue(contPuntos.getValue()-100);//suma 100 al contador de puntos
             puntos-=100;
             

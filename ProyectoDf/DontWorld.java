@@ -24,6 +24,7 @@ public class DontWorld extends World
     private Bestia best1;
     private ManzanaGus manG;
     private Counter contNivel;
+    private int band=0;
     /**
      * Constructor for objects of class DontWorld.
      * 
@@ -74,7 +75,7 @@ public class DontWorld extends World
 
     public void generaManzanaGus()
     {
-        y=Greenfoot.getRandomNumber(250);
+        y=Greenfoot.getRandomNumber(600);
         ManzanaGus manGus=new ManzanaGus();
 
         this.addObject(manGus,600,y);
@@ -83,7 +84,7 @@ public class DontWorld extends World
 
     public void generaMoneda()
     {
-        y=Greenfoot.getRandomNumber(250);
+        y=Greenfoot.getRandomNumber(600);
         Moneda coin1=new Moneda();
 
         this.addObject(coin1,600,y);
@@ -91,7 +92,7 @@ public class DontWorld extends World
     }
     public void generaMonedaVerde()
     {
-        y=Greenfoot.getRandomNumber(250);
+        y=Greenfoot.getRandomNumber(600);
         MonedaVerde coin2=new MonedaVerde();
 
         this.addObject(coin2,600,y);
@@ -99,7 +100,7 @@ public class DontWorld extends World
     }
     public void generaManzana()
     {
-        y=Greenfoot.getRandomNumber(250);
+        y=Greenfoot.getRandomNumber(600);
         Manzana apple1= new Manzana();
         this.addObject(apple1,600,y);
 
@@ -159,26 +160,54 @@ public class DontWorld extends World
 
     public void checaNivel()
     {
+        
         if( jugador.getPuntos()>=0&jugador.getPuntos()>=1000)
         {
+           
+            
+            if(band==0)
+            {
+             Greenfoot.playSound("Powerlvl1.wav");
+             band=1;
+            }
             nivel1();
         }
-        if( jugador.getPuntos()>=2000&jugador.getPuntos()<=3500)
+        if( jugador.getPuntos()>=2000&jugador.getPuntos()<=3000)
         {
+            if(band==1)
+            {
+             Greenfoot.playSound("Powerlvl2.wav");
+             band=2;
+            }
              this.removeObjects(this.getObjects(Marciano.class));
             nivel2();
         }
         if( jugador.getPuntos()>=3500)
         {
+            if(band==2)
+            {
+             Greenfoot.playSound("Powerlvl3.wav");
+             band=3;
+            }
             nivel3();
+        }
+        
+        if( jugador.getPuntos()>=4000)
+        {
+            if(band==3)
+            {
+             Greenfoot.setWorld(new Win());
+            }
+            
         }
     }
 
     public void nivel1()
     {
-         z=Greenfoot.getRandomNumber(100);
+        
+         z=Greenfoot.getRandomNumber(1000);
          contNivel.setValue(2);
-        if(z==3)
+        if(z==200)
         {
             generaMarciano();
         }
@@ -186,9 +215,10 @@ public class DontWorld extends World
 
     public void nivel2()
     {
-        z=Greenfoot.getRandomNumber(100);
+        
+        z=Greenfoot.getRandomNumber(1000);
          contNivel.setValue(3);
-        if(z==3)
+        if(z==200)
         {
           
             generaBestia();
@@ -198,13 +228,14 @@ public class DontWorld extends World
 
     public void nivel3()
     {
-        z=Greenfoot.getRandomNumber(900);
+       
+        z=Greenfoot.getRandomNumber(1000);
          contNivel.setValue(4);
-        if(z==1)
+        if(z==400)
         {
             generaBestia();
         }
-        if(z==2)
+        if(z==200)
         {
             generaMarciano();
         }
