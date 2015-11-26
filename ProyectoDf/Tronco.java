@@ -9,7 +9,7 @@ import greenfoot.*;
 public class Tronco extends Actor
 {
     private int WtamX=650,WtamY=600;//TAMAÑO DEL MUNDO EN X y Y
-    private int vel=-2,x,y;
+    private int vel,x,y;
     private DontWorld mundo;
     
     /**
@@ -20,24 +20,39 @@ public class Tronco extends Actor
     {
     
     }    
-  
-    public void aumentaVel()
+    public Tronco()
     {
-        mundo=(DontWorld) getWorld();
-if(mundo.getGal().getHitByApple()==true);
-{
-    vel=vel-1;
-}        
-    }
     
+    
+    }
+  
+   /* public void aumentaVel()
+    {
+        DontWorld mundo = (DontWorld)getWorld();
+        if(mundo.getGal().getHitByApple())
+       {
+    vel=vel-1;
+       }
+    }
+    public void disminuyeVel()
+    {
+    DontWorld mundo = (DontWorld)getWorld();
+        if(mundo.getGal().getHitByAppleGus())
+       {
+    vel=vel+1;
+       }
+    }
+    */
     public void muevete()
     { 
+        DontWorld mundo=(DontWorld)getWorld();
+        vel=mundo.getVel();
       
         x=getX();
         y=getY();
         
        setLocation(x+vel,y);
-     // aumentaVel();
+    
     }
     
     public void checaLimite()
@@ -47,6 +62,7 @@ if(mundo.getGal().getHitByApple()==true);
         {
          DontWorld mundo= (DontWorld)getWorld();
          mundo.generaTroncos();
+         mundo.generaBonif();
          getWorld().removeObject(this);
         }                                                       
     }

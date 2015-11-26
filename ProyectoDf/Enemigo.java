@@ -8,13 +8,22 @@ import greenfoot.*;
  */
 public class Enemigo extends Actor
 {
-    /**
-     * Act - do whatever the Enemigos wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+   private int vel;
     public void act() 
     {
          
     }    
+    public Enemigo()
+    { 
+        
+    }
+    
+   public void muevete()
+   {
+     DontWorld mundo=(DontWorld)getWorld();
+     vel=mundo.getVel();
+    move(vel);
+    }
+   
     
 }

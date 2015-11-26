@@ -8,10 +8,15 @@ import greenfoot.*;
  */
 public class Tronco3 extends Tronco
 {
+    
     /**
      * Act - do whatever the Tronco3 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+   public Tronco3()
+    {
+   
+    }
     public void act() 
     {
         // Add your action code here.

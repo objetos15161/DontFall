@@ -5,5 +5,5 @@ comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Bestia\ wants\ to\ do.\ This\ met
 comment1.params=
 comment1.target=void\ checaLimite()
 comment2.params=
-comment2.target=void\ checkHit()
+comment2.target=void\ mueve()
 numComments=3

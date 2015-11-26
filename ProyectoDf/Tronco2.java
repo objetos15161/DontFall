@@ -8,11 +8,16 @@ import greenfoot.*;
  */
 public class Tronco2 extends Tronco
 {
-    private int WtamX=650,WtamY=600;//TAMAÑO DEL MUNDO EN X y Y
+  
     /**
      * Act - do whatever the Tronco wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public Tronco2()
+    {
+   
+    
+    }
     public void act() 
     {
         // Add your action code here.

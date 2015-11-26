@@ -3,9 +3,10 @@ comment0.params=
 comment0.target=void\ act()
 comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Troncos\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment1.params=
-comment1.target=void\ aumentaVel()
+comment1.target=Tronco()
 comment2.params=
 comment2.target=void\ muevete()
+comment2.text=\ public\ void\ aumentaVel()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ DontWorld\ mundo\ \=\ (DontWorld)getWorld();\r\n\ \ \ \ \ \ \ \ if(mundo.getGal().getHitByApple())\r\n\ \ \ \ \ \ \ {\r\n\ \ \ \ vel\=vel-1;\r\n\ \ \ \ \ \ \ }\r\n\ \ \ \ }\r\n\ \ \ \ public\ void\ disminuyeVel()\r\n\ \ \ \ {\r\n\ \ \ \ DontWorld\ mundo\ \=\ (DontWorld)getWorld();\r\n\ \ \ \ \ \ \ \ if(mundo.getGal().getHitByAppleGus())\r\n\ \ \ \ \ \ \ {\r\n\ \ \ \ vel\=vel+1;\r\n\ \ \ \ \ \ \ }\r\n\ \ \ \ }\r\n
 comment3.params=
 comment3.target=void\ checaLimite()
 numComments=4

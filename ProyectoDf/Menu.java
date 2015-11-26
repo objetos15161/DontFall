@@ -59,7 +59,7 @@ public class Menu extends World
     }
     if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==rec)
     {
-    Greenfoot.setWorld(new DontWorld());
+    Greenfoot.setWorld(new Records());
     
     }
     if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==salir)

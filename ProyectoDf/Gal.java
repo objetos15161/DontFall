@@ -37,7 +37,8 @@ public class Gal extends Actor
 
         contVidas= new Counter("Vidas ");//Contador de vidas
         contVidas.setValue(3);
-
+        
+       // Greenfoot.playSound("Sky Levels.mid");
        
     }
     public void act() 
@@ -81,7 +82,7 @@ public class Gal extends Actor
         {
 
             healthbar.loseHealth();//le da un mensaje a la barra para que baje un
-
+            //this.removeTouching(Enemigo.class); No me gusto
             if(healthbar.getHealth()<=0)
             {
                 //aqui se pone el gameover
@@ -101,6 +102,7 @@ public class Gal extends Actor
             if(contMonedas.getValue()%10==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
             {
                 //puntos+=1;
+              
                 contVidas.setValue(contVidas.getValue()+1);
             }
 
@@ -115,10 +117,12 @@ public class Gal extends Actor
         {
             // contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
 
-
+            
             DontWorld mundo=(DontWorld)getWorld();
             mundo.generaManzana();
             removeTouching(Manzana.class);
+            
+            mundo.generaBonif();
             
         }
 
@@ -149,18 +153,17 @@ public class Gal extends Actor
             puntos-=100;
 
             DontWorld mundo=(DontWorld)getWorld();
-            mundo.generaMoneda();
+            mundo.generaBonif();
             removeTouching(MonedaVerde.class);
 
+        }
+        if(contMonedas.getValue()==1)
+        {
+        contVidas.setValue(3);
         }
 
     }
 
-    public boolean getHitByApple()
-    {
-    
-    return hitByApple;
-    }
     public int getPuntos()
     {
         return puntos;
@@ -182,9 +185,19 @@ public class Gal extends Actor
     protected void addedToWorld(World mundo)
     {
         mundo.addObject(contPuntos,50,20);
-        mundo.addObject(contVidas,150,20);
-        mundo.addObject(contMonedas,250,20);
+        mundo.addObject(contVidas,152,20);
+        mundo.addObject(contMonedas,255,20);
 
     }
-
+    public boolean getHitByApple()
+    {
+    return hitByApple;
+    }
+    
+    public boolean getHitByAppleGus()
+    {
+    return hitByAppleGus;
+    }
+    
+    
 }

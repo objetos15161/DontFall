@@ -1,9 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class BAyuda here.
+ * La clase ayuda contiene una imagen editada con la ayuda necesaria
+ * para que el jugador comprenda de que trata el juego
  * 
- * @author (your name) 
+ * @author Claudio Espinosa Guzman
  * @version (a version number or a date)
  */
 public class BAyuda extends Boton
@@ -16,4 +17,8 @@ public class BAyuda extends Boton
     {
         // Add your action code here.
     }    
+    public BAyuda()
+    {
+    
+    }
 }

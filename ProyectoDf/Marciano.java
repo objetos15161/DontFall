@@ -18,8 +18,9 @@ public class Marciano extends Enemigo
     public void act() 
     {
         setImage(marciano.getCurrentImage());  
+        muevete();
         checaLimite();
-      move(-2);
+      
     } 
      public void checaLimite()
     {
@@ -27,18 +28,9 @@ public class Marciano extends Enemigo
         {
          DontWorld mundo= (DontWorld)getWorld();
          mundo.generaMarciano();
+         mundo.generaBonif();
          getWorld().removeObject(this);
         }                                                       
     }
-      public void checkHit()
-    {
-     boolean hitByGal=isTouching(Gal.class);
-     if(hitByGal)
-     {
-       DontWorld mundo = (DontWorld)getWorld();
-       mundo.generaMarciano();
-       getWorld().removeObject(this);
-        }
-     
-    }
+    
 }

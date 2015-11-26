@@ -16,4 +16,8 @@ public class ManzanaGus extends Bonificacion
     {
       genera();
     }    
+    public ManzanaGus()
+    {
+    
+    }
 }

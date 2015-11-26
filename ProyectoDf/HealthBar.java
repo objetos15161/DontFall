@@ -8,9 +8,9 @@ import java.awt.Color;
  */
 public class HealthBar extends Actor
 {
-    private int health = 50;
-    private int healthBarWidth = 100;
-    private int healthBarHeight = 15;
+    private int health =90;
+    private int healthBarWidth = 90;
+    private int healthBarHeight = 20;
     private int pixelsPerHealthPoint = (int)healthBarWidth/health;
     /**
      * Act - do whatever the HealthBar wants to do. This method is called whenever
@@ -35,7 +35,7 @@ public class HealthBar extends Actor
     GreenfootImage myImage = getImage();
     myImage.setColor(Color.WHITE);
     myImage.drawRect(0,0,healthBarWidth+1,healthBarHeight+1);
-    myImage.setColor(Color.CYAN);
+    myImage.setColor(Color.BLUE);
     myImage.fillRect(1,1,health*pixelsPerHealthPoint,healthBarHeight);
     }
     
@@ -49,7 +49,7 @@ public class HealthBar extends Actor
     }
     public void reiniciaHealth()
     {
-    health=20;
+    health=90;
     }
 }
 

@@ -16,6 +16,7 @@ public class DontWorld extends World
     private Tronco1 tronco1;//variable para los troncos de tamaño 1
     private Tronco2 tronco2, tronco4;//variable para los troncos de tamaño 2
     private Tronco3 tronco5,tronco6;
+   
     private Moneda coin1;//variable para crear una moneda AMARILLA
     private MonedaVerde coin2;//variable para crear una moneda VERDE
     private Manzana apple1;//variable para crear una manzana
@@ -24,7 +25,9 @@ public class DontWorld extends World
     private Bestia best1;
     private ManzanaGus manG;
     private Counter contNivel;
-    private int band=0;
+    private int band=0;//band es una variable para saber en que nivel se esta jugando
+    private int velTroncos=-2;
+   
     /**
      * Constructor for objects of class DontWorld.
      * 
@@ -39,8 +42,9 @@ public class DontWorld extends World
         tronco1= new Tronco1();//obstaculo
         this.addObject(tronco1,250,YTAM-80);
         tronco2= new Tronco2();//obstaculo de diferente tamaño
-        this.addObject(tronco2,450,80);
+        this.addObject(tronco2,460,80);
         
+      
         /**
         tronco3= new Tronco2();
         this.addObject(tronco3,600,YTAM-80);
@@ -54,12 +58,14 @@ public class DontWorld extends World
         */
         //Bonificaciones///////
         Greenfoot.setWorld(new Menu());
-        this.addObject(healthbar,500,20);
+        this.addObject(healthbar,450,20);
         
         contNivel= new Counter("Nivel ");//Contador para saber en que nivel esta
         contNivel.setValue(1);
         
-        addObject(contNivel,350,20);
+        addObject(contNivel,356,20);
+        
+       
 
     }
   
@@ -71,6 +77,7 @@ public class DontWorld extends World
     public void act()
     {
         generaBonif();
+        checkHitByApple();
         checaNivel();
     }
 
@@ -109,15 +116,15 @@ public class DontWorld extends World
 
     public void generaBonif()
     {
-         z=Greenfoot.getRandomNumber(900);       
-        if(z==0)
+         z=Greenfoot.getRandomNumber(200);       
+        if(z<2)
         {
-            generaMoneda(); 
-        }else if(z==1)
+          generaMoneda(); 
+        }else if(z==10)
         {
-            generaManzana();
-
-        }else if (z==3)
+             generaManzana();
+             
+        }else if (z==30)
         {
         generaManzanaGus();
         }else if (z==15)
@@ -162,7 +169,7 @@ public class DontWorld extends World
     public void checaNivel()
     {
         
-        if( jugador.getPuntos()>=0&jugador.getPuntos()>=1000)
+        if( jugador.getPuntos()>=0&jugador.getPuntos()>=500)
         {
            
             
@@ -173,7 +180,7 @@ public class DontWorld extends World
             }
             nivel1();
         }
-        if( jugador.getPuntos()>=2000&jugador.getPuntos()<=3000)
+        if( jugador.getPuntos()>=500&jugador.getPuntos()<=1000)
         {
             if(band==1)
             {
@@ -183,7 +190,7 @@ public class DontWorld extends World
              this.removeObjects(this.getObjects(Marciano.class));
             nivel2();
         }
-        if( jugador.getPuntos()>=3500)
+        if( jugador.getPuntos()>=1500)
         {
             if(band==2)
             {
@@ -193,10 +200,11 @@ public class DontWorld extends World
             nivel3();
         }
         
-        if( jugador.getPuntos()>=4000)
+        if( jugador.getPuntos()>=2000)
         {
             if(band==3)
             {
+             Greenfoot.playSound("Win.mp3");
              Greenfoot.setWorld(new Win());
             }
             
@@ -264,5 +272,23 @@ public class DontWorld extends World
     return jugador;
     }
      
-
+    public void checkHitByApple()
+    {
+   if(jugador.getHitByApple())
+   {
+    velTroncos-=1;
+    }else if(jugador.getHitByAppleGus())
+   {
+    velTroncos+=1;
+    }
+    if(velTroncos>-2)
+    {
+        velTroncos=-2;
+    }
+    
+    }
+   public int getVel()
+   {
+    return velTroncos;
+    }
 }

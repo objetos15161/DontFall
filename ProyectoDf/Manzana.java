@@ -8,6 +8,7 @@ import greenfoot.*;
  */
 public class Manzana extends Bonificacion
 {
+    private boolean hitByGal;
     /**
      * Act - do whatever the Manzana wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,7 +16,9 @@ public class Manzana extends Bonificacion
     public void act() 
     {
         // Add your action code here.
-        genera();
+       
+       genera();
+        
     }    
     
    

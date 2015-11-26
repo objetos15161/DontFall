@@ -16,4 +16,7 @@ public class BRecords extends Boton
     {
         // Add your action code here.
     }    
+    public BRecords()
+    {
+    }
 }
