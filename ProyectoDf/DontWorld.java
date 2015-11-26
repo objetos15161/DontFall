@@ -200,12 +200,14 @@ public class DontWorld extends World
             nivel3();
         }
         
-        if( jugador.getPuntos()>=2000)
+        if( jugador.getPuntos()>=3000)
         {
             if(band==3)
             {
              Greenfoot.playSound("Win.mp3");
              Greenfoot.setWorld(new Win());
+             Greenfoot.delay(500);
+             Greenfoot.setWorld(new Menu());
             }
             
         }
@@ -285,7 +287,10 @@ public class DontWorld extends World
     {
         velTroncos=-2;
     }
-    
+    if(velTroncos<=-8)
+    {
+    velTroncos=-8;
+    }
     }
    public int getVel()
    {
