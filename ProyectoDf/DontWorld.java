@@ -169,7 +169,7 @@ public class DontWorld extends World
     public void checaNivel()
     {
         
-        if( jugador.getPuntos()>=0&jugador.getPuntos()>=500)
+        if( jugador.getPuntos()>=0&jugador.getPuntos()>=700)
         {
            
             
@@ -180,7 +180,7 @@ public class DontWorld extends World
             }
             nivel1();
         }
-        if( jugador.getPuntos()>=500&jugador.getPuntos()<=1000)
+        if( jugador.getPuntos()>=700&jugador.getPuntos()<=1300)
         {
             if(band==1)
             {
@@ -190,7 +190,7 @@ public class DontWorld extends World
              this.removeObjects(this.getObjects(Marciano.class));
             nivel2();
         }
-        if( jugador.getPuntos()>=1500)
+        if( jugador.getPuntos()>=1300)
         {
             if(band==2)
             {

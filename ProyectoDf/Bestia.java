@@ -19,15 +19,17 @@ public class Bestia extends Enemigo
     {
        
       
-       mueve();
+     
+       move(2);
+       setImage(bestia.getCurrentImage());
         checaLimite();
-        
-        setImage(bestia.getCurrentImage());
+        //  mueve();
+       
         
             }    
       public void checaLimite()
     {
-        if(getX()==getWorld().getWidth()-30)
+        if(getX()==getWorld().getWidth()-50)
         {
          DontWorld mundo= (DontWorld)getWorld();
          mundo.generaBonif();
