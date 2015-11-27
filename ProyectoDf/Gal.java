@@ -183,7 +183,7 @@ public class Gal extends Actor
 
     public void checaFin()
     {
-        if(getY()==10)//getWorld().getHeight()
+        if(getY()==0)//getWorld().getHeight()
         {
             contVidas.setValue(contVidas.getValue()-1);
             //Gal jugador2=new Gal();// si se cae agrega un nuevo Gal en una posicion

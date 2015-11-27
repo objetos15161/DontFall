@@ -43,7 +43,7 @@ public class DontWorld extends World
         mFondo.play();
         setPaintOrder(HealthBar.class,Counter.class,Gal.class,Enemigo.class,Bonificacion.class,Tronco.class);
         jugador= new Gal();//Principal Personaje
-        this.addObject(jugador,150,220);//metodo para agregarlo al mundo
+        this.addObject(jugador,150,250);//metodo para agregarlo al mundo
         //Troncos//////////// estas variables son para la entrada incial
         tronco1= new Tronco1();//obstaculo
         this.addObject(tronco1,250,YTAM-80);
@@ -228,7 +228,7 @@ public class DontWorld extends World
        
       
         contNivel.setValue(3);
-        if(tiempo.millisElapsed()>=2000)
+        if(tiempo.millisElapsed()>=3000)
         {
             generaBestia();
             tiempo.mark();
