@@ -61,6 +61,15 @@ public class Gal extends Actor
         {
             setLocation(x,y-2);
         }
+       /*  if(Greenfoot.isKeyDown("RIGHT"))
+        {
+            setLocation(x+2,y);
+        }
+        if(Greenfoot.isKeyDown("LEFT"))
+        {
+            setLocation(x-2,y);
+        }
+        */
     }
 
     public void checkHitPunt()//esta funcion checa si Gal golpea algo y ademas checa el puntaje
@@ -81,7 +90,8 @@ public class Gal extends Actor
         if(hitByTrunk||hitByEnemigo)
         {
 
-            healthbar.loseHealth();//le da un mensaje a la barra para que baje un
+            healthbar.loseHealth();
+             healthbar.loseHealth();//le da un mensaje a la barra para que baje un
             //this.removeTouching(Enemigo.class); No me gusto
             if(healthbar.getHealth()<=0)
             {
@@ -106,8 +116,8 @@ public class Gal extends Actor
                 contVidas.setValue(contVidas.getValue()+1);
             }
 
-            DontWorld mundo=(DontWorld)getWorld();
-            mundo.generaMoneda();
+          //  DontWorld mundo=(DontWorld)getWorld();
+            mun.generaMoneda();
             removeTouching(Moneda.class);
 
             contMonedas.setValue(contMonedas.getValue()+1);
@@ -118,19 +128,21 @@ public class Gal extends Actor
             // contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
 
             
-            DontWorld mundo=(DontWorld)getWorld();
-            mundo.generaManzana();
+           // DontWorld mundo=(DontWorld)getWorld();
+            mun.generaManzana();
             removeTouching(Manzana.class);
             
-            mundo.generaBonif();
+            mun.generaBonif();
             
         }
 
         if(contVidas.getValue()<=0)//esta condicion es para que el contador de vidas no de valores negativos
         {
+            mun.stopMusic();
             Greenfoot.playSound("GameOver.wav");
             contVidas.setValue(0);
             Greenfoot.setWorld(new GameOver());
+           mun.guardaRecord();
             Greenfoot.delay(200);
             Greenfoot.setWorld(new Menu());
         }
@@ -142,8 +154,8 @@ public class Gal extends Actor
         if(hitByAppleGus)
         {
 
-            DontWorld mundo=(DontWorld)getWorld();
-            mundo.generaManzanaGus();
+           // DontWorld mundo=(DontWorld)getWorld();
+            mun.generaManzanaGus();
             removeTouching(ManzanaGus.class);
         }
         if(hitByGreenCoin)
@@ -152,8 +164,8 @@ public class Gal extends Actor
             contPuntos.setValue(contPuntos.getValue()-100);//suma 100 al contador de puntos
             puntos-=100;
 
-            DontWorld mundo=(DontWorld)getWorld();
-            mundo.generaBonif();
+          //  DontWorld mundo=(DontWorld)getWorld();
+            mun.generaBonif();
             removeTouching(MonedaVerde.class);
 
         }

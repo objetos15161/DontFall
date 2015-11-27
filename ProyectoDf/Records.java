@@ -20,7 +20,7 @@ public class Records extends World
         super(600, 650, 1);
         Greenfoot.setWorld(new Menu());
         
-        score=new ScoreBoard(600, 400);
+        score=new ScoreBoard(300, 400);
         addObject(score, getWidth()/2, getHeight()/2);
         regresa=new BRegresar();
         addObject(regresa,500,550);
