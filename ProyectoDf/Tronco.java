@@ -47,7 +47,7 @@ public class Tronco extends Actor
     { 
         DontWorld mundo=(DontWorld)getWorld();
         vel=mundo.getVel();
-        this.removeTouching(Marciano.class);
+       
         x=getX();
         y=getY();
         

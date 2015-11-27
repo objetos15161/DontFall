@@ -50,17 +50,6 @@ public class DontWorld extends World
         tronco2= new Tronco2();//obstaculo de diferente tamaño
         this.addObject(tronco2,460,80);
 
-        /**
-        tronco3= new Tronco2();
-        this.addObject(tronco3,600,YTAM-80);
-        tronco4= new Tronco2();
-        this.addObject(tronco4,600,80);
-
-        tronco5= new Tronco3();
-        this.addObject(tronco4,700,80);
-        tronco6= new Tronco3();
-        this.addObject(tronco3,700,YTAM-80);
-         */
         //Bonificaciones///////
         Greenfoot.setWorld(new Menu());
         this.addObject(healthbar,450,20);
@@ -179,6 +168,7 @@ public class DontWorld extends World
 
             if(band==0)
             {
+                 healthbar.reiniciaHealth();
                 // Greenfoot.playSound("Powerlvl1.wav");
                 Greenfoot.playSound("GameOver.wav");
                 band=1;
@@ -189,6 +179,7 @@ public class DontWorld extends World
         {
             if(band==1)
             {
+                  healthbar.reiniciaHealth();
                 Greenfoot.playSound("Powerlvl2.wav");
                 band=2;
             }
@@ -199,6 +190,7 @@ public class DontWorld extends World
         {
             if(band==2)
             {
+                  healthbar.reiniciaHealth();
                 Greenfoot.playSound("Powerlvl3.wav");
                 band=3;
             }
@@ -222,8 +214,7 @@ public class DontWorld extends World
 
     public void nivel1()
     {
-
-        z=Greenfoot.getRandomNumber(100);
+       
         contNivel.setValue(2);
         if(tiempo.millisElapsed()>=3000)
         {
@@ -234,8 +225,8 @@ public class DontWorld extends World
 
     public void nivel2()
     {
-
-        z=Greenfoot.getRandomNumber(100);
+       
+      
         contNivel.setValue(3);
         if(tiempo.millisElapsed()>=2000)
         {
@@ -247,17 +238,20 @@ public class DontWorld extends World
 
     public void nivel3()
     {
-
-        z=Greenfoot.getRandomNumber(1000);
+           
+        z=Greenfoot.getRandomNumber(500);
         contNivel.setValue(4);
-        if(z==400)
+        if(z==200)
         {
             generaBestia();
+         
         }
-        if(z==400)
+        if(z==100)
         {
             generaMarciano();
+           
         }
+         tiempo.mark();
 
     }
 

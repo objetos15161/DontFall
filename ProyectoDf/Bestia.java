@@ -29,11 +29,11 @@ public class Bestia extends Enemigo
             }    
       public void checaLimite()
     {
-        if(getX()==getWorld().getWidth()-50)
+        if(getX()==getWorld().getWidth()-40)
         {
          DontWorld mundo= (DontWorld)getWorld();
          mundo.generaBonif();
-         mundo.generaBestia();
+    //     mundo.generaBestia();
          getWorld().removeObject(this);
         }   
    

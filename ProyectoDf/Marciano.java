@@ -27,7 +27,7 @@ public class Marciano extends Enemigo
         if(getX()==0)
         {
          DontWorld mundo= (DontWorld)getWorld();
-         mundo.generaMarciano();
+       //  mundo.generaMarciano();
          mundo.generaBonif();
          getWorld().removeObject(this);
         }                                                       

@@ -38,7 +38,7 @@ public class Gal extends Actor
         contVidas= new Counter("Vidas ");//Contador de vidas
         contVidas.setValue(3);
         
-       // Greenfoot.playSound("Sky Levels.mid");
+     
        
     }
     public void act() 
@@ -55,13 +55,13 @@ public class Gal extends Actor
     {
         x=getX();
         y=getY();   
-        setLocation(x,y+3);
+        setLocation(x,y-3);
 
-        if(Greenfoot.isKeyDown("UP"))
+        if(Greenfoot.isKeyDown("DOWN"))
         {
-            setLocation(x,y-2);
+            setLocation(x,y+2);
         }
-       /*  if(Greenfoot.isKeyDown("RIGHT"))
+         if(Greenfoot.isKeyDown("RIGHT"))
         {
             setLocation(x+2,y);
         }
@@ -69,7 +69,7 @@ public class Gal extends Actor
         {
             setLocation(x-2,y);
         }
-        */
+        
     }
 
     public void checkHitPunt()//esta funcion checa si Gal golpea algo y ademas checa el puntaje
@@ -183,7 +183,7 @@ public class Gal extends Actor
 
     public void checaFin()
     {
-        if(getY()>=550)//getWorld().getHeight()
+        if(getY()==10)//getWorld().getHeight()
         {
             contVidas.setValue(contVidas.getValue()-1);
             //Gal jugador2=new Gal();// si se cae agrega un nuevo Gal en una posicion
