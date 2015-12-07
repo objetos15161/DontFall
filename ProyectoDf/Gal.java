@@ -129,7 +129,7 @@ public class Gal extends Actor
         {
             Greenfoot.playSound("getcoin.wav");
             contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
-            puntos+=2000;
+            puntos+=100;
             if(contMonedas.getValue()%10==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
             {
                 //puntos+=1;

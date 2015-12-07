@@ -17,7 +17,8 @@ public class Tronco extends Actor
      */
     public void act() 
     {
-    
+    muevete();
+    checaLimite();
     }    
     public Tronco()
     {

@@ -15,7 +15,7 @@ public class DontWorld extends World
     private int R,arriba=0;//r y z son para generar numeros aleatorios, arriba es es bandera para verificar  que tronco sigue por pintarse   
     private int y;//variable para determinar de manera aleatoria la y de los objetos   
     private Gal jugador;//Variable para crear al jugador
-    private Tronco1 tronco1,tronco2;//variable para los troncos de tamaño 1
+    private Tronco tronco1,tronco2;//variable para los troncos de tamaño 1
     private Escenario escenario;
 
     private Moneda moneda;//variable para crear una moneda AMARILLA
@@ -49,9 +49,13 @@ public class DontWorld extends World
         jugador= new Gal();//Principal Personaje
         this.addObject(jugador,150,250);//metodo para agregarlo al mundo
         //Troncos//////////// estas variables son para la entrada incial
-        tronco1= new Tronco1();//obstaculo
+        tronco1= new Tronco();//obstaculo
+        
+        tronco1.setImage("Tronco2.png");
         this.addObject(tronco1,250,YTAM-80);
-        tronco2= new Tronco1();//obstaculo de diferente tamaño
+        tronco2= new Tronco();//obstaculo de diferente tamaño
+        
+        tronco2.setImage("Tronco2.png");
         this.addObject(tronco2,460,80);
 
         //Bonificaciones///////
@@ -181,8 +185,8 @@ public class DontWorld extends World
     public void generaTroncos()//genera troncos en parejas aleatorias
     {
 
-        Tronco1  t1;   
-        t1= new Tronco1();//obstaculo
+        Tronco  t1;   
+        t1= new Tronco();//obstaculo
 
         if(arriba==0)//agregara a la pareja num 1
         {

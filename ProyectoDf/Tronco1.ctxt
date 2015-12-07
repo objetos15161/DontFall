@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.params=
-comment0.target=void\ act()
-comment0.text=\r\n\ El\ metodo\ act\ manda\ llamar\ a\ los\ metodos\r\n\ descritos\ en\ la\ clase\ padre\ Tronco.\r\n
-comment1.params=
-comment1.target=Tronco1()
-numComments=2
