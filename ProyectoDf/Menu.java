@@ -8,7 +8,8 @@ import greenfoot.*;
 
 public class Menu extends World
 {
-   
+    public static final int XTAM=650;
+  public static final int YTAM=600;  
     /*private BJugar jugar;
    private BCreditos cred;
    private BAyuda ayuda;
@@ -20,7 +21,9 @@ public class Menu extends World
   private Boton ayuda;
   private Boton salir;
   private Boton records;
-
+  private Escenario escenario;
+  private Boton regresar;
+    
      /**
      *En el constructor de la clase se crean los botones
      *y se les asigna una imagen.
@@ -42,6 +45,10 @@ public class Menu extends World
         ayuda.setImage("Ayuda.png");
         salir.setImage("Salir.png");
         records.setImage("Records.png");
+        escenario= new Escenario();
+        
+        regresar=new Boton();
+   regresar.setImage("Regresar.png");
         botones();//se agregan los botones
      
     }
@@ -72,14 +79,21 @@ public class Menu extends World
     }
     if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==ayuda)
     {
-    Greenfoot.setWorld(new Ayuda());
- 
+   // Greenfoot.setWorld(new Ayuda()):
    
+   escenario.setImage("metal_glass_button_setR1.png");
+   addObject(escenario,getWidth()/2,getHeight()/2);
+
+   this.addObject(regresar,XTAM-140,YTAM-30);
+  
     }
     if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==creditos)
     {
-    Greenfoot.setWorld(new Creditos());
-    
+    //Greenfoot.setWorld(new Creditos());
+    escenario.setImage("Creditos.png");
+    addObject(escenario,getWidth()/2,getHeight()/2);
+       regresar.setImage("R2.png");
+          this.addObject(regresar,XTAM-140,YTAM-30);
     }
     if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==records)
     {
@@ -91,7 +105,12 @@ public class Menu extends World
     Greenfoot.stop();
     
     }
-    
+    if(Greenfoot.getMouseInfo().getButton()==1&&Greenfoot.getMouseInfo().getActor()==regresar)
+    {
+    Greenfoot.setWorld(new Menu());
+    }
+   
+ 
     
     }
     

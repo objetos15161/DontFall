@@ -21,7 +21,7 @@ public class Gal extends Actor
     private boolean hitByApple ; 
     private boolean hitByAppleGus;
     private boolean hitByGreenCoin; 
-    
+    private Escenario escenario;
     private boolean hitByBonificacion;
 
     /**
@@ -38,8 +38,8 @@ public class Gal extends Actor
 
         contVidas= new Counter("Vidas ");//Contador de vidas
         contVidas.setValue(3);
-
-       
+        escenario= new Escenario();
+      
     }
 
     /**
@@ -129,7 +129,7 @@ public class Gal extends Actor
         {
             Greenfoot.playSound("getcoin.wav");
             contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
-            puntos+=100;
+            puntos+=2000;
             if(contMonedas.getValue()%10==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
             {
                 //puntos+=1;
@@ -161,7 +161,10 @@ public class Gal extends Actor
             mun.stopMusic();
             Greenfoot.playSound("GameOver.wav");
             contVidas.setValue(0);
-            Greenfoot.setWorld(new GameOver());
+          //  Greenfoot.setWorld(new GameOver());+
+            escenario.setImage("game-over.jpg");
+            mun.setPaintOrder(Escenario.class,Tronco.class,Bonificacion.class);
+            mun.addObject(escenario,mun.getWidth()/2,mun.getHeight()/2);
             mun.guardaRecord();
             Greenfoot.delay(200);
             Greenfoot.setWorld(new Menu());

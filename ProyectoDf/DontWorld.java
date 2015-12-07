@@ -16,7 +16,7 @@ public class DontWorld extends World
     private int y;//variable para determinar de manera aleatoria la y de los objetos   
     private Gal jugador;//Variable para crear al jugador
     private Tronco1 tronco1,tronco2;//variable para los troncos de tamaño 1
-
+    private Escenario escenario;
 
     private Moneda moneda;//variable para crear una moneda AMARILLA
     private MonedaVerde monedaVerde;//variable para crear una moneda VERDE
@@ -63,7 +63,7 @@ public class DontWorld extends World
 
         addObject(contNivel,356,20);
         records= new GuardaRecord();
-
+        escenario= new Escenario();
         tiempo= new SimpleTimer();
 
     }
@@ -249,7 +249,11 @@ public class DontWorld extends World
             {
                 stopMusic();
                 Greenfoot.playSound("Win.mp3");
-                Greenfoot.setWorld(new Win());
+                //Greenfoot.setWorld(new Win());
+                
+                 escenario.setImage("nNsFFG6.jpg");
+                setPaintOrder(Escenario.class,Tronco.class,Bonificacion.class);
+                addObject(escenario,getWidth()/2,getHeight()/2);
                 guardaRecord();
                 Greenfoot.delay(300);
                 Greenfoot.setWorld(new Menu());
