@@ -3,36 +3,40 @@ import greenfoot.*;
 /**
  * Write a description of class DontWorld here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class DontWorld extends World
 {
-    public static final int XTAM=650;
-    public static final int YTAM=600;   
-    private int band=0;//band es una variable para saber en que nivel se esta jugando
+    public static final int XTAM=650;//variable que determina el tamaño del mundo en X
+    public static final int YTAM=600;//Variable que determina el tamaño del mundo en Y   
+    private int nivel=0;//band es una variable para saber en que nivel se esta jugando
     private int velTroncos=-2;
-    private int z,R,arriba=0;//r y z son para generar numeros aleatorios, arriba es es bandera para verificar  que tronco sigue por pintarse   
+    private int R,arriba=0;//r y z son para generar numeros aleatorios, arriba es es bandera para verificar  que tronco sigue por pintarse   
     private int y;//variable para determinar de manera aleatoria la y de los objetos   
     private Gal jugador;//Variable para crear al jugador
-    private Tronco1 tronco1;//variable para los troncos de tamaño 1
-    private Tronco2 tronco2, tronco4;//variable para los troncos de tamaño 2
-    private Tronco3 tronco5,tronco6;
+    private Tronco1 tronco1,tronco2;//variable para los troncos de tamaño 1
 
-    private Moneda coin1;//variable para crear una moneda AMARILLA
-    private MonedaVerde coin2;//variable para crear una moneda VERDE
-    private Manzana apple1;//variable para crear una manzana
-    private HealthBar healthbar= new HealthBar();
+
+    private Moneda moneda;//variable para crear una moneda AMARILLA
+    private MonedaVerde monedaVerde;//variable para crear una moneda VERDE
+    //  private Bonificacion manzanaGus;
+    // private Bonificacion moneda;
+    // private Bonificacion manzana;
+    //private Bonificacion monedaVerde;
+
+    private Manzana manzana;//variable para crear una manzana
+    private HealthBar healthbar= new HealthBar();//
     private Marciano mar1;
     private Bestia best1;
-    private ManzanaGus manG;
+    private ManzanaGus manzanaGus;
     private Counter contNivel;
     private GreenfootSound mFondo;
     private SimpleTimer tiempo;
     private GuardaRecord records;
 
     /**
-     * Constructor for objects of class DontWorld.
+     * Constructor de la clase DontWorld inicializa los objetos iniciales del mundo
      * 
      */
     public DontWorld()//Constructor del mundo (inicializa los objetos en una posicion)
@@ -47,7 +51,7 @@ public class DontWorld extends World
         //Troncos//////////// estas variables son para la entrada incial
         tronco1= new Tronco1();//obstaculo
         this.addObject(tronco1,250,YTAM-80);
-        tronco2= new Tronco2();//obstaculo de diferente tamaño
+        tronco2= new Tronco1();//obstaculo de diferente tamaño
         this.addObject(tronco2,460,80);
 
         //Bonificaciones///////
@@ -59,15 +63,29 @@ public class DontWorld extends World
 
         addObject(contNivel,356,20);
         records= new GuardaRecord();
-        
+
         tiempo= new SimpleTimer();
 
     }
+
+    /**
+     * Este metodo retorna la barra de vida
+     * para poder saber su estado
+     * 
+     */
+
     public HealthBar getHealthBar()
     {
         return healthbar;
     }
 
+    /**
+     * El metodo act crea los objetos que aparecen en el juego
+     * - Monedas
+     * - Manzanas 
+     * Y checa el nivel.
+     * 
+     */
     public void act()
     {
         generaBonif();
@@ -75,43 +93,74 @@ public class DontWorld extends World
         checaNivel();
     }
 
+    /**
+     * Este metodo genera un objeto de la clase Manzana
+     * con otra imagen que representa una manzana con gusano
+     * 
+     */
     public void generaManzanaGus()
     {
         y=Greenfoot.getRandomNumber(600);
-        ManzanaGus manGus=new ManzanaGus();
+        // manzanaGus=new Bonificacion();
+        //manzanaGus.setImage("Manzana11.png");
+        manzanaGus= new ManzanaGus();
 
-        this.addObject(manGus,600,y);
+        this.addObject(manzanaGus,600,y);
 
     }
 
+    /**
+     * Este metodo genera una moneda y la agrega al mundo
+     * 
+     */
     public void generaMoneda()
     {
         y=Greenfoot.getRandomNumber(600);
-        Moneda coin1=new Moneda();
+        //  moneda= new Bonificacion();
+        // moneda.setImage("bitcoin.png");
+        moneda= new Moneda();
 
-        this.addObject(coin1,600,y);
+        this.addObject(moneda,600,y);
 
     }
 
+    /**
+     * Este metodo genera una Moneda verde al mundo y lo agrega al mundo.
+     * 
+     */
     public void generaMonedaVerde()
     {
         y=Greenfoot.getRandomNumber(600);
-        MonedaVerde coin2=new MonedaVerde();
+        // monedaVerde= new Bonificacion();
+        // monedaVerde.setImage("bitcoinGreen.png");
+        monedaVerde= new MonedaVerde();
 
-        this.addObject(coin2,600,y);
+        this.addObject(monedaVerde,600,y);
 
     }
 
+    /**
+     * Este metodo genera un objeto manzana y lo añade al mundo
+     * 
+     */
     public void generaManzana()
     {
         y=Greenfoot.getRandomNumber(600);
-        Manzana apple1= new Manzana();
-        this.addObject(apple1,600,y);
+        // manzana= new Bonificacion();
+        // manzana.setImage("Manzana1.png");
+        manzana= new Manzana();
+        this.addObject(manzana,600,y);
 
     }
 
+    /**
+     * Este metodo genera una manzana o moneda
+     * dependiendo del valor de la variable z 
+     * 
+     */
     public void generaBonif()
     {
+        int z;
         z=Greenfoot.getRandomNumber(200);       
         if(z<2)
         {
@@ -131,75 +180,72 @@ public class DontWorld extends World
 
     public void generaTroncos()//genera troncos en parejas aleatorias
     {
-        R=Greenfoot.getRandomNumber(6);
 
-        Tronco1  t1; 
-        Tronco1  t2;   
-        Tronco2  t3;  
-        Tronco2  t4;      
-        Tronco3  t5;  
-        Tronco3  t6;  
-
+        Tronco1  t1;   
         t1= new Tronco1();//obstaculo
-        t2= new Tronco1();//obstaculo de diferente tamaño    
-        t3= new Tronco2();
-        t4= new Tronco2();    
-        t5= new Tronco3(); 
-        t6= new Tronco3();
 
         if(arriba==0)//agregara a la pareja num 1
         {
-
-            this.addObject(t5,XTAM,80);
+            t1.setImage("Tronco2.png");
+            this.addObject(t1,XTAM,80);
             arriba=1;
         }else if(arriba==1)
         {
-
+            t1.setImage("Tronco1.png");
             this.addObject(t1,XTAM,YTAM-80);
             arriba=0;
         }
 
     }
+
+    /**
+     * El metodo checaNivel regula el numero de puntos que debe 
+     * tener el jugador para pasar de nivel
+     * 
+     */
     public void checaNivel()
     {
 
         if( jugador.getPuntos()>1000) //
         {
 
-            if(band==0)
+            if(nivel==0)
             {
-                 healthbar.reiniciaHealth();
+                healthbar.reiniciaHealth();
+                
                 // Greenfoot.playSound("Powerlvl1.wav");
                 Greenfoot.playSound("GameOver.wav");
-                band=1;
+                nivel=1;
             }
             nivel1();
         }
         if( jugador.getPuntos()>2000)
         {
-            if(band==1)
+            if(nivel==1)
             {
-                  healthbar.reiniciaHealth();
+                healthbar.reiniciaHealth();
+                 this.setBackground("Escenario2.jpg");
                 Greenfoot.playSound("Powerlvl2.wav");
-                band=2;
+                nivel=2;
             }
             this.removeObjects(this.getObjects(Marciano.class));
             nivel2();
         }
         if( jugador.getPuntos()>=3000)
         {
-            if(band==2)
+            if(nivel==2)
             {
-                  healthbar.reiniciaHealth();
+                healthbar.reiniciaHealth();
+                 this.setBackground("Escenario3.jpg");
                 Greenfoot.playSound("Powerlvl3.wav");
-                band=3;
+                nivel=3;
             }
             nivel3();
         }
 
         if( jugador.getPuntos()>=4000)
         {
-            if(band==3)
+            if(nivel==3)
             {
                 stopMusic();
                 Greenfoot.playSound("Win.mp3");
@@ -212,10 +258,14 @@ public class DontWorld extends World
         }
     }
 
+    /**
+     * En este metodo se define el nivel 1
+     * cada 3 segundos se genera un objeto marciano 
+     * 
+     */
     public void nivel1()
     {
-       
-        contNivel.setValue(2);
+
         if(tiempo.millisElapsed()>=3000)
         {
             generaMarciano();
@@ -223,10 +273,14 @@ public class DontWorld extends World
         }
     }
 
+    /**
+     * En este metodo se define el nivel 2 en el cual
+     * se genera un objeto bestia cada 3 segundos
+     * 
+     */
     public void nivel2()
     {
-       
-      
+
         contNivel.setValue(3);
         if(tiempo.millisElapsed()>=3000)
         {
@@ -236,25 +290,35 @@ public class DontWorld extends World
 
     }
 
+    /**
+     * En este metodo se define el nivel 3 que el cual consta
+     * de la generacion de objetos de las clases bestia y marciano
+     * esto de manera aleatoria con ayuda de la variable z
+     * 
+     */
     public void nivel3()
     {
-           
+        int z;
         z=Greenfoot.getRandomNumber(500);
         contNivel.setValue(4);
         if(z==200)
         {
             generaBestia();
-         
+
         }
         if(z==100)
         {
             generaMarciano();
-           
+
         }
-         tiempo.mark();
+        tiempo.mark();
 
     }
 
+    /**
+     * En este metodo se crea y se agrega al mundo un objeto de la clase marciano
+     * 
+     */
     public void generaMarciano()
     {
         int r=Greenfoot.getRandomNumber(260);
@@ -263,6 +327,10 @@ public class DontWorld extends World
 
     }
 
+    /**
+     * En este metodo se crea y se agrega al mundo un objeto de la clase bestia
+     * 
+     */
     public void generaBestia()
     {
         int r=Greenfoot.getRandomNumber(300);
@@ -271,11 +339,40 @@ public class DontWorld extends World
 
     }
 
+    /**
+     * Metodo que retorna al jugador para poder acceder a sus variables internas
+     * 
+     */
     public Gal getGal()
     {
         return jugador;
     }
 
+    public Bonificacion getManzana()
+    {
+        return manzana;
+    }
+
+    public Bonificacion getManzanaGus()
+    {
+        return manzanaGus;
+    }
+
+    public Bonificacion getMoneda()
+    {
+        return moneda;
+    }
+
+    public Bonificacion getMonedaVerde()
+    {
+        return monedaVerde;
+    }
+
+    /**
+     * En este metodo se checa si algun objeto de la clase Manzana es tocado por el jugador
+     * para subir o bajar la velocidad del scroll del mundo
+     * 
+     */
     public void checkHitByApple()
     {
         if(jugador.getHitByApple())
@@ -295,18 +392,33 @@ public class DontWorld extends World
         }
     }
 
+    /**
+     * Este metodo retorna la variable de velocidad del scroll
+     * 
+     */
     public int getVel()
     {
         return velTroncos;
     }
 
+    /**
+     * Este metodo almacena la puntuacion mas alta
+     * registrada en el juego
+     * 
+     */
     public void guardaRecord()
     {
         records.almacenaRecords(jugador.getPuntos());
     }
 
+    /**
+     * Este metodo detiene la musica cuando el juego termina o 
+     * se pierde.
+     * 
+     */
     public void stopMusic()
     {
         mFondo.stop();
     }
+
 }

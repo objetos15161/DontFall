@@ -1,8 +1,11 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Menu()
+comment0.text=\r\nEn\ el\ constructor\ de\ la\ clase\ se\ crean\ los\ botones\r\ny\ se\ les\ asigna\ una\ imagen.\r\n
 comment1.params=
 comment1.target=void\ botones()
+comment1.text=\r\nEn\ este\ metodo\ se\ agregan\ al\ mundo\ los\ botones\r\npreviamente\ inicializados\ en\ el\ constructor\ de\ la\ clase\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\nEl\ metodo\ act\ de\ la\ clase\ verifica\ si\ se\ presiona\ un\ objeto\ de\ la\ clase\ Boton\r\n
 numComments=3

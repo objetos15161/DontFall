@@ -8,9 +8,10 @@ import greenfoot.*;
  */
 public class Ayuda extends World
 {
-   private BRegresar regresar;
+
   public static final int XTAM=650;
- public static final int YTAM=600;  
+  public static final int YTAM=600;  
+  private Boton regresar;
     
     /**
      * En esta clase se pone la imagen de ayuda 
@@ -21,7 +22,8 @@ public class Ayuda extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(XTAM,YTAM, 1); 
-        regresar= new BRegresar();
+        regresar=new Boton();
+        regresar.setImage("Regresar.png");
         
         this.addObject(regresar,XTAM-140,YTAM-30);//se adiciona el boton en la parte inferior derecha de la pantalla
         

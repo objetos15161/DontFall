@@ -1,10 +1,10 @@
 import greenfoot.*;
 import java.awt.Color;
 /**
- * Write a description of class HealthBar here.
+ * La clase HealthBar representa una barra de vida
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class HealthBar extends Actor
 {
@@ -13,22 +13,31 @@ public class HealthBar extends Actor
     private int healthBarHeight = 20;
     private int pixelsPerHealthPoint = (int)healthBarWidth/health;
     /**
-     * Act - do whatever the HealthBar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * El constructor le da el estado inicial a la barra de vida.
      */
+  
     public HealthBar()
     {
     update();
     
     }
+    /**
+     * Este metodo regresa la variable health para saber su estado cuando se requiere
+     */
     public int getHealth()
     {
         return health;
     }
+    /**
+     * El metodo actualiza la barra (si se perdio o gano health)
+     */
     public void act() 
     {
       update();
     }    
+    /**
+     * El metodo dibuja un rectangulo y lo rellena
+     */
     public void update()
     {
     setImage(new GreenfootImage(healthBarWidth+2,healthBarHeight+2));
@@ -47,6 +56,10 @@ public class HealthBar extends Actor
     {
         health++;
     }
+    /**
+     * El metodo reinicia la barra de vida 
+     * a su valor original
+     */
     public void reiniciaHealth()
     {
     health=90;

@@ -1,29 +1,29 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Tronco here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * 
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class Tronco1 extends Tronco
 {
     
     /**
-     * Act - do whatever the Tronco wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * El metodo act manda llamar a los metodos
+     * descritos en la clase padre Tronco.
      */
-    public Tronco1()
-    {
-    
-    
-    }
+   
     public void act() 
     {
         // Add your action code here.
         muevete();
        checaLimite();
     }    
-
+ public Tronco1()
+    {
+    
+    
+    }
    
 }

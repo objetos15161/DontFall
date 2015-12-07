@@ -1,7 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Records()
-comment0.text=\r\n\ Constructor\ para\ objetos\ de\ clase\ Records.\r\n\ \r\n
+comment0.text=\r\n\ El\ constructor\ agrega\ una\ nueva\ tabla\ de\ puntaje\ y\ un\ Boton\ para\ regresar\r\n\ al\ Menu\ principal\r\n\ \r\n
 comment1.params=
 comment1.target=void\ act()
+comment1.text=\r\n\ EL\ metodo\ act\ checa\ si\ se\ presiona\ el\ Boton\ para\ regresar\r\n
 numComments=2

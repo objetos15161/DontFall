@@ -1,17 +1,18 @@
 import greenfoot.*;
 
 /**
- * Escribe una descrición de la clase Records aquí.
+ * La clase records agrega al mundo una tabla para guardar puntajes
  * 
- * @autor (tu nombre) 
- * @versión (Un número de versión o una fecha)
+ * @autor (Claudio Daniel Espinosa Guzman) 
+ * @versión (Semestre 2015-2016/I)
  */
 public class Records extends World
 {
  private ScoreBoard score;
- private BRegresar regresa;
+ private Boton regresa;
     /**
-     * Constructor para objetos de clase Records.
+     * El constructor agrega una nueva tabla de puntaje y un Boton para regresar
+     * al Menu principal
      * 
      */
     public Records()
@@ -22,10 +23,13 @@ public class Records extends World
         
         score=new ScoreBoard(300, 400);
         addObject(score, getWidth()/2, getHeight()/2);
-        regresa=new BRegresar();
+        regresa= new Boton();
+        regresa.setImage("Regresar.png");
         addObject(regresa,500,550);
     }
-    //Metodo act checa si el usuario quiere regresar
+    /**
+     * EL metodo act checa si se presiona el Boton para regresar
+     */
      public void act()
     {
         if(Greenfoot.getMouseInfo()!=null){

@@ -13,8 +13,7 @@ public class Tronco extends Actor
     private DontWorld mundo;
     
     /**
-     * Act - do whatever the Troncos wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     *
      */
     public void act() 
     {
@@ -25,24 +24,10 @@ public class Tronco extends Actor
     
     
     }
-  
-   /* public void aumentaVel()
-    {
-        DontWorld mundo = (DontWorld)getWorld();
-        if(mundo.getGal().getHitByApple())
-       {
-    vel=vel-1;
-       }
-    }
-    public void disminuyeVel()
-    {
-    DontWorld mundo = (DontWorld)getWorld();
-        if(mundo.getGal().getHitByAppleGus())
-       {
-    vel=vel+1;
-       }
-    }
-    */
+   /**
+     *Este metodo mueve un objeto Tronco hacia la izquierda
+     *para simular un scroll.
+     */
     public void muevete()
     { 
         DontWorld mundo=(DontWorld)getWorld();
@@ -54,7 +39,10 @@ public class Tronco extends Actor
        setLocation(x+vel,y);
     
     }
-    
+    /**
+     *Este metodo checa si el objeto Tronco esta 
+     *en x=0 del mundo.
+     */
     public void checaLimite()
     {
         

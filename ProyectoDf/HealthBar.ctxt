@@ -1,17 +1,21 @@
 #BlueJ class context
 comment0.params=
 comment0.target=HealthBar()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ HealthBar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.text=\r\n\ El\ constructor\ le\ da\ el\ estado\ inicial\ a\ la\ barra\ de\ vida.\r\n
 comment1.params=
 comment1.target=int\ getHealth()
+comment1.text=\r\n\ Este\ metodo\ regresa\ la\ variable\ health\ para\ saber\ su\ estado\ cuando\ se\ requiere\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ El\ metodo\ actualiza\ la\ barra\ (si\ se\ perdio\ o\ gano\ health)\r\n
 comment3.params=
 comment3.target=void\ update()
+comment3.text=\r\n\ El\ metodo\ dibuja\ un\ rectangulo\ y\ lo\ rellena\r\n
 comment4.params=
 comment4.target=void\ loseHealth()
 comment5.params=
 comment5.target=void\ winHealth()
 comment6.params=
 comment6.target=void\ reiniciaHealth()
+comment6.text=\r\n\ El\ metodo\ reinicia\ la\ barra\ de\ vida\ \r\n\ a\ su\ valor\ original\r\n
 numComments=7

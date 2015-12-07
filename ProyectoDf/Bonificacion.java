@@ -1,7 +1,6 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Bonificacion here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -10,18 +9,24 @@ public class Bonificacion extends Actor
 {
     private int vel;
     /**
-     * Act - do whatever the Bonificacion wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * El constructor de la clase Bonificacion
      */
     public Bonificacion()
     {
     
     }
+    /**
+     * El metodo act genera un tipo de Bonificacion 
+     */
     public void act() 
     {
-        // Add your action code here.
+       genera();
     }    
-   
+   /**
+     *  En este metodo cada que un objeto de la clase Bonificacion esta en 
+     *  x=0 se elimina del mundo y genera otro del lado contrario del mundo.
+     *  
+     */
      public void genera()
     {
     DontWorld mundo= (DontWorld)getWorld();    

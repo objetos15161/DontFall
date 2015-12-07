@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=
-comment0.target=Tronco1()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Tronco\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.target=void\ act()
+comment0.text=\r\n\ El\ metodo\ act\ manda\ llamar\ a\ los\ metodos\r\n\ descritos\ en\ la\ clase\ padre\ Tronco.\r\n
 comment1.params=
-comment1.target=void\ act()
+comment1.target=Tronco1()
 numComments=2

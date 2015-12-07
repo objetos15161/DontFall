@@ -1,16 +1,16 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Gal here.
+ * La clase Gal es donde se describen las caracteristicas
+ * del jugador, ademas del comportamiento y las condicciones
+ * con las cuales interactua con el mundo.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class Gal extends Actor
 {
-    private int x;
-    private int y;
-    private int vel=100;  
+  
     private int puntos=0;
     private Counter contPuntos;
     private Counter contVidas;
@@ -22,10 +22,11 @@ public class Gal extends Actor
     private boolean hitByAppleGus;
     private boolean hitByGreenCoin; 
     
+    private boolean hitByBonificacion;
 
-    /*
-     * Act - do whatever the Gal wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+    /**
+     * Constructor de la clase Gal
+     * inicializa los contadores de Puntos, Monedas y Vidas
      */
     public Gal()//Constructor de la clase Gal
     {
@@ -37,10 +38,16 @@ public class Gal extends Actor
 
         contVidas= new Counter("Vidas ");//Contador de vidas
         contVidas.setValue(3);
-        
-     
+
        
     }
+
+    /**
+     * El metodo act manda llamar a los metodos para
+     * checar si se presiono una tecla
+     * checar si choca con los demas objetos que estan en el mundo
+     * checar si se perdio el juego
+     */
     public void act() 
     {
         // Add your action code here.
@@ -51,8 +58,13 @@ public class Gal extends Actor
 
     }    
     //objetos2223.github.io
+    /**
+     * El metodo checa si se presiona algunas de las felchas
+     * del teclado
+     */
     public void checkKey()
     {
+        int x,y;
         x=getX();
         y=getY();   
         setLocation(x,y-3);
@@ -61,7 +73,7 @@ public class Gal extends Actor
         {
             setLocation(x,y+2);
         }
-         if(Greenfoot.isKeyDown("RIGHT"))
+        if(Greenfoot.isKeyDown("RIGHT"))
         {
             setLocation(x+2,y);
         }
@@ -69,14 +81,22 @@ public class Gal extends Actor
         {
             setLocation(x-2,y);
         }
-        
+
     }
 
+    /**
+     * Este metodo evalua las variables booleanas 
+     * para checar si el jugador toco algun objeto que este en el mundo
+     * ademas acumula o resta los puntos.
+     */
     public void checkHitPunt()//esta funcion checa si Gal golpea algo y ademas checa el puntaje
     {
-
-         hitByTrunk    = isTouching(Tronco.class);
+        int x,y;
+        DontWorld mun= (DontWorld)getWorld();
+        hitByTrunk    = isTouching(Tronco.class);
         hitByEnemigo  = isTouching(Enemigo.class);
+       // hitByBonificacion=isTouching(Bonificacion.class);
+    
         hitByCoin     = isTouching(Moneda.class);
         hitByApple    = isTouching(Manzana.class);
         hitByAppleGus = isTouching(ManzanaGus.class);
@@ -84,15 +104,15 @@ public class Gal extends Actor
 
         x=getX();
         y=getY();
-        DontWorld mun= (DontWorld)getWorld();
+       
         HealthBar healthbar = mun.getHealthBar();
 
         if(hitByTrunk||hitByEnemigo)
         {
 
             healthbar.loseHealth();
-             healthbar.loseHealth();//le da un mensaje a la barra para que baje un
-            //this.removeTouching(Enemigo.class); No me gusto
+            healthbar.loseHealth();//le da un mensaje a la barra para que baje un
+           
             if(healthbar.getHealth()<=0)
             {
                 //aqui se pone el gameover
@@ -104,7 +124,8 @@ public class Gal extends Actor
             //   Greenfoot.stop();
             hitByTrunk=false;
         }
-        if(hitByCoin)
+        
+         if(hitByCoin)
         {
             Greenfoot.playSound("getcoin.wav");
             contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
@@ -112,28 +133,27 @@ public class Gal extends Actor
             if(contMonedas.getValue()%10==0)//este if agrega una vida cada que el jugador tiene un puntaje de 1000
             {
                 //puntos+=1;
-              
+
                 contVidas.setValue(contVidas.getValue()+1);
             }
 
-          //  DontWorld mundo=(DontWorld)getWorld();
+            //  DontWorld mundo=(DontWorld)getWorld();
             mun.generaMoneda();
-            removeTouching(Moneda.class);
+           removeTouching(Moneda.class);
 
             contMonedas.setValue(contMonedas.getValue()+1);
 
         }
+        
+        
         if(hitByApple)
         {
-            // contPuntos.setValue(contPuntos.getValue()+1);//aqui se quita esto y se pone la velocidad mas alta 
 
-            
-           // DontWorld mundo=(DontWorld)getWorld();
             mun.generaManzana();
             removeTouching(Manzana.class);
-            
+
             mun.generaBonif();
-            
+
         }
 
         if(contVidas.getValue()<=0)//esta condicion es para que el contador de vidas no de valores negativos
@@ -142,7 +162,7 @@ public class Gal extends Actor
             Greenfoot.playSound("GameOver.wav");
             contVidas.setValue(0);
             Greenfoot.setWorld(new GameOver());
-           mun.guardaRecord();
+            mun.guardaRecord();
             Greenfoot.delay(200);
             Greenfoot.setWorld(new Menu());
         }
@@ -154,7 +174,6 @@ public class Gal extends Actor
         if(hitByAppleGus)
         {
 
-           // DontWorld mundo=(DontWorld)getWorld();
             mun.generaManzanaGus();
             removeTouching(ManzanaGus.class);
         }
@@ -163,24 +182,27 @@ public class Gal extends Actor
             Greenfoot.playSound("click2.wav");
             contPuntos.setValue(contPuntos.getValue()-100);//suma 100 al contador de puntos
             puntos-=100;
-
-          //  DontWorld mundo=(DontWorld)getWorld();
             mun.generaBonif();
             removeTouching(MonedaVerde.class);
 
         }
         if(contMonedas.getValue()==1)
         {
-        contVidas.setValue(3);
+            contVidas.setValue(3);
         }
 
     }
-
+  /**
+     *Este metodo retorna la variable entera 
+     *de los puntos para poder saber cuando cambiar de nivel
+     */
     public int getPuntos()
     {
         return puntos;
     }
-
+  /**
+     * El metodo checa si el jugador llego a el margen permitido en Y
+     */
     public void checaFin()
     {
         if(getY()==0)//getWorld().getHeight()
@@ -193,7 +215,10 @@ public class Gal extends Actor
 
         }
     }
-
+  /**
+     * Este metodo agrega los contadores al mundo
+     * cuando el jugador es creado
+     */
     protected void addedToWorld(World mundo)
     {
         mundo.addObject(contPuntos,50,20);
@@ -201,15 +226,18 @@ public class Gal extends Actor
         mundo.addObject(contMonedas,255,20);
 
     }
+  /**
+     * Este Metodo retorna una Bandera para
+     * saber si el jugador toca un objeto Manzana
+     */
     public boolean getHitByApple()
     {
-    return hitByApple;
+        return hitByApple;
     }
-    
+
     public boolean getHitByAppleGus()
     {
-    return hitByAppleGus;
+        return hitByAppleGus;
     }
-    
-    
+
 }

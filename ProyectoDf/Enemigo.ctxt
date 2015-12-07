@@ -5,4 +5,5 @@ comment1.params=
 comment1.target=Enemigo()
 comment2.params=
 comment2.target=void\ muevete()
+comment2.text=\r\n\ El\ metodo\ mueve\ los\ objetos\ a\ una\ velocidad\ \r\n\ la\ cual\ se\ obtiene\ mediante\ el\ metodo\r\n\ getVel()\ del\ mundo\r\n
 numComments=3
