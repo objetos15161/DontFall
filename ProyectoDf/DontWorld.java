@@ -75,9 +75,8 @@ public class DontWorld extends World
     /**
      * Este metodo retorna la barra de vida
      * para poder saber su estado
-     * 
+     *  @return HealtBar
      */
-
     public HealthBar getHealthBar()
     {
         return healthbar;
@@ -212,7 +211,7 @@ public class DontWorld extends World
 
         if( jugador.getPuntos()>1000) //
         {
-
+             contNivel.setValue(2);
             if(nivel==0)
             {
                 healthbar.reiniciaHealth();
@@ -221,22 +220,27 @@ public class DontWorld extends World
                 Greenfoot.playSound("GameOver.wav");
                 nivel=1;
             }
+           
             nivel1();
         }
         if( jugador.getPuntos()>2000)
         {
+            
+            contNivel.setValue(3);
             if(nivel==1)
             {
                 healthbar.reiniciaHealth();
                  this.setBackground("Escenario2.jpg");
                 Greenfoot.playSound("Powerlvl2.wav");
                 nivel=2;
+               this.removeObjects(this.getObjects(Marciano.class));
             }
-            this.removeObjects(this.getObjects(Marciano.class));
+    
+             
             nivel2();
         }
         if( jugador.getPuntos()>=3000)
-        {
+        {    contNivel.setValue(4);
             if(nivel==2)
             {
                 healthbar.reiniciaHealth();
@@ -251,7 +255,7 @@ public class DontWorld extends World
         {
             if(nivel==3)
             {
-                stopMusic();
+                 stopMusic();
                 Greenfoot.playSound("Win.mp3");
                 //Greenfoot.setWorld(new Win());
                 
@@ -261,8 +265,9 @@ public class DontWorld extends World
                 guardaRecord();
                 Greenfoot.delay(300);
                 Greenfoot.setWorld(new Menu());
+                
             }
-
+               
         }
     }
 
@@ -273,7 +278,7 @@ public class DontWorld extends World
      */
     public void nivel1()
     {
-
+       
         if(tiempo.millisElapsed()>=3000)
         {
             generaMarciano();
@@ -288,8 +293,7 @@ public class DontWorld extends World
      */
     public void nivel2()
     {
-
-        contNivel.setValue(3);
+            
         if(tiempo.millisElapsed()>=3000)
         {
             generaBestia();
@@ -307,8 +311,8 @@ public class DontWorld extends World
     public void nivel3()
     {
         int z;
-        z=Greenfoot.getRandomNumber(500);
-        contNivel.setValue(4);
+        z=Greenfoot.getRandomNumber(300);
+       
         if(z==200)
         {
             generaBestia();
@@ -349,33 +353,14 @@ public class DontWorld extends World
 
     /**
      * Metodo que retorna al jugador para poder acceder a sus variables internas
-     * 
+     * @return Gal
      */
     public Gal getGal()
     {
         return jugador;
     }
 
-    public Bonificacion getManzana()
-    {
-        return manzana;
-    }
-
-    public Bonificacion getManzanaGus()
-    {
-        return manzanaGus;
-    }
-
-    public Bonificacion getMoneda()
-    {
-        return moneda;
-    }
-
-    public Bonificacion getMonedaVerde()
-    {
-        return monedaVerde;
-    }
-
+    
     /**
      * En este metodo se checa si algun objeto de la clase Manzana es tocado por el jugador
      * para subir o bajar la velocidad del scroll del mundo
@@ -402,7 +387,7 @@ public class DontWorld extends World
 
     /**
      * Este metodo retorna la variable de velocidad del scroll
-     * 
+     *  @return int 
      */
     public int getVel()
     {
@@ -427,6 +412,14 @@ public class DontWorld extends World
     public void stopMusic()
     {
         mFondo.stop();
+    }
+    
+   // public void stopped()
+    {
+   // super.stopped();
+   // mFondo.stop();
+   
+    
     }
 
 }

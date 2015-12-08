@@ -10,7 +10,7 @@ import greenfoot.*;
  */
 public class Gal extends Actor
 {
-  
+
     private int puntos=0;
     private Counter contPuntos;
     private Counter contVidas;
@@ -39,7 +39,7 @@ public class Gal extends Actor
         contVidas= new Counter("Vidas ");//Contador de vidas
         contVidas.setValue(3);
         escenario= new Escenario();
-      
+
     }
 
     /**
@@ -95,8 +95,8 @@ public class Gal extends Actor
         DontWorld mun= (DontWorld)getWorld();
         hitByTrunk    = isTouching(Tronco.class);
         hitByEnemigo  = isTouching(Enemigo.class);
-       // hitByBonificacion=isTouching(Bonificacion.class);
-    
+        // hitByBonificacion=intersects(mun.getManzana());
+
         hitByCoin     = isTouching(Moneda.class);
         hitByApple    = isTouching(Manzana.class);
         hitByAppleGus = isTouching(ManzanaGus.class);
@@ -104,7 +104,7 @@ public class Gal extends Actor
 
         x=getX();
         y=getY();
-       
+
         HealthBar healthbar = mun.getHealthBar();
 
         if(hitByTrunk||hitByEnemigo)
@@ -112,7 +112,7 @@ public class Gal extends Actor
 
             healthbar.loseHealth();
             healthbar.loseHealth();//le da un mensaje a la barra para que baje un
-           
+
             if(healthbar.getHealth()<=0)
             {
                 //aqui se pone el gameover
@@ -124,8 +124,8 @@ public class Gal extends Actor
             //   Greenfoot.stop();
             hitByTrunk=false;
         }
-        
-         if(hitByCoin)
+
+        if(hitByCoin)
         {
             Greenfoot.playSound("getcoin.wav");
             contPuntos.setValue(contPuntos.getValue()+100);//suma 100 al contador de puntos
@@ -139,13 +139,12 @@ public class Gal extends Actor
 
             //  DontWorld mundo=(DontWorld)getWorld();
             mun.generaMoneda();
-           removeTouching(Moneda.class);
+            removeTouching(Moneda.class);
 
             contMonedas.setValue(contMonedas.getValue()+1);
 
         }
-        
-        
+
         if(hitByApple)
         {
 
@@ -158,16 +157,18 @@ public class Gal extends Actor
 
         if(contVidas.getValue()<=0)//esta condicion es para que el contador de vidas no de valores negativos
         {
-            mun.stopMusic();
+           mun.stopMusic();
             Greenfoot.playSound("GameOver.wav");
             contVidas.setValue(0);
           //  Greenfoot.setWorld(new GameOver());+
             escenario.setImage("game-over.jpg");
-            mun.setPaintOrder(Escenario.class,Tronco.class,Bonificacion.class);
+            mun.setPaintOrder(Menu.class,Escenario.class,Tronco.class,Bonificacion.class);
             mun.addObject(escenario,mun.getWidth()/2,mun.getHeight()/2);
             mun.guardaRecord();
             Greenfoot.delay(200);
             Greenfoot.setWorld(new Menu());
+            mun.removeObject(escenario);
+
         }
         if(puntos<=0)
         {
@@ -195,7 +196,8 @@ public class Gal extends Actor
         }
 
     }
-  /**
+
+    /**
      *Este metodo retorna la variable entera 
      *de los puntos para poder saber cuando cambiar de nivel
      */
@@ -203,7 +205,8 @@ public class Gal extends Actor
     {
         return puntos;
     }
-  /**
+
+    /**
      * El metodo checa si el jugador llego a el margen permitido en Y
      */
     public void checaFin()
@@ -218,7 +221,8 @@ public class Gal extends Actor
 
         }
     }
-  /**
+
+    /**
      * Este metodo agrega los contadores al mundo
      * cuando el jugador es creado
      */
@@ -229,7 +233,8 @@ public class Gal extends Actor
         mundo.addObject(contMonedas,255,20);
 
     }
-  /**
+
+    /**
      * Este Metodo retorna una Bandera para
      * saber si el jugador toca un objeto Manzana
      */
