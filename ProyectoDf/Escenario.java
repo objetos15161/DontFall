@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Escribe una descrición de la clase Escenario aquí.
+ * Es una clase que representa a Imagenes 
  * 
- * @autor (tu nombre) 
- * @versión (Un número de versión o una fecha)
+ * @autor (Claudio Daniel Espinosa Guzman) 
+ * @versión (Semestre 2015-2016/I)
  */
 public class Escenario extends Actor
 {

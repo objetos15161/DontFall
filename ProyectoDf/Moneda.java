@@ -1,35 +1,25 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Moneda here.
+ * Clase que hereda de Bonificacion
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class Moneda extends Bonificacion
 {
-
-    /**
-     * Act - do whatever the Moneda wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     /**
+     * El metodo act manda llamar al metodo genera 
+     * el cual hereda de la clase Bonificacion.
      */
     public void act() 
     {
-        // Add your action code here.
-        genera();
-
-    }   
-
-    public void Moneda()
+      genera();
+    }    
+    public Moneda()
     {
-
-    }
-
-   
-
-    }
-
     
-
+    }
+}
 
     

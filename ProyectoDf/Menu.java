@@ -1,7 +1,7 @@
 import greenfoot.*;
 //import greenfoot.GreenfootImage.*;
 /**
-
+ *Representa a un Menu del juego
  * @author Claudo Daniel Espinosa Guzman
  * @version (a version number or a date)
  */

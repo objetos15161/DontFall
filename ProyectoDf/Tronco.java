@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Troncos here.
+ * La clase representa a un obstaculo Tronco en el mundo
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class Tronco extends Actor
 {
@@ -13,7 +13,7 @@ public class Tronco extends Actor
     private DontWorld mundo;
     
     /**
-     *
+     *El metodo act mueve el objeto y checa cuando toca en x=0
      */
     public void act() 
     {

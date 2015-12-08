@@ -1,17 +1,17 @@
 import greenfoot.*;
 
-/**
- * Write a description of class MonedaVerde here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+/** 
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class MonedaVerde extends Bonificacion
 {
-    /**
-     * Act - do whatever the MonedaVerde wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+    
+     /**
+     * El metodo act manda llamar al metodo genera 
+     * el cual hereda de la clase Bonificacion.
      */
+    
     public void act() 
     {
        genera();

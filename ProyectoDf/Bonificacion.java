@@ -2,8 +2,8 @@ import greenfoot.*;
 
 /**
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class Bonificacion extends Actor
 {

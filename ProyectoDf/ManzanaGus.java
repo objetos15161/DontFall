@@ -1,16 +1,16 @@
 import greenfoot.*;
 
 /**
- * Write a description of class MonedaGus here.
+ * Clase que hereda de Bonificacion
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Claudio Daniel Espinosa Guzman) 
+ * @version (Semestre 2015-2016/I)
  */
 public class ManzanaGus extends Bonificacion
 {
-    /**
-     * Act - do whatever the MonedaGus wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     /**
+     * El metodo act manda llamar al metodo genera 
+     * el cual hereda de la clase Bonificacion.
      */
     public void act() 
     {

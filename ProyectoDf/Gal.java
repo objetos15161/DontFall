@@ -237,12 +237,17 @@ public class Gal extends Actor
     /**
      * Este Metodo retorna una Bandera para
      * saber si el jugador toca un objeto Manzana
+     * @return boolean
      */
     public boolean getHitByApple()
     {
         return hitByApple;
     }
-
+     /**
+     * Este Metodo retorna una Bandera para
+     * saber si el jugador toca un objeto ManzanaGus
+     * @return boolean
+     */
     public boolean getHitByAppleGus()
     {
         return hitByAppleGus;
